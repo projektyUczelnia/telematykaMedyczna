@@ -53,7 +53,7 @@ public class AddVisit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //zapis danych do bazy danych
-
+//dodaje komentarz
                 //jesli sie uda to:
                 Intent intentBackToMainActivity = new Intent(AddVisit.this, MainActivity.class);
                 startActivity(intentBackToMainActivity);

@@ -1,68 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChoiceData">
 
-    <LinearLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:columnCount="2"
+        app:rowCount="6">
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Button" />
+            android:id="@+id/weightButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/weight"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_gravity="fill"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/weightView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="2"
+            app:layout_gravity="fill"
+            android:text="@string/result"
+            android:layout_margin="2dp"/>
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Button" />
+            android:id="@+id/temperatureButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="2"
+            app:layout_rowWeight="1"
+            app:layout_gravity="fill"
+            android:text="@string/temperature"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/temperatureView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="2"
+            app:layout_rowWeight="2"
+            app:layout_gravity="fill"
+            android:text="@string/result"
+            android:layout_margin="2dp"/>
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Button" />
+            android:id="@+id/glucoseButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="3"
+            app:layout_rowWeight="1"
+            app:layout_gravity="fill"
+            android:text="@string/glucose"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/glucoseView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="3"
+            app:layout_rowWeight="2"
+            app:layout_gravity="fill"
+            android:text="@string/result"
+            android:layout_margin="2dp"/>
 
         <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Button" />
+            android:id="@+id/pressureButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="4"
+            app:layout_rowWeight="1"
+            app:layout_gravity="fill"
+            android:text="@string/pressure"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/pressureView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="4"
+            app:layout_rowWeight="2"
+            app:layout_gravity="fill"
+            android:text="@string/result"
+            android:layout_margin="2dp"/>
 
         <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Button" />
+            android:id="@+id/visitButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="5"
+            app:layout_rowWeight="1"
+            app:layout_gravity="fill"
+            android:text="@string/visit"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/visitView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="5"
+            app:layout_rowWeight="2"
+            app:layout_gravity="fill"
+            android:text="@string/result"
+            android:layout_margin="2dp"/>
 
         <Button
-            android:id="@+id/button6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Button" />
+            android:id="@+id/otherButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="6"
+            app:layout_rowWeight="1"
+            app:layout_gravity="fill"
+            android:text="@string/other"
+            android:layout_margin="2dp"/>
 
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Button" />
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/otherView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_columnWeight="6"
+            app:layout_rowWeight="2"
+            app:layout_gravity="fill"
+            android:text="@string/result"
+            android:layout_margin="2dp"/>
+
+    </android.support.v7.widget.GridLayout>
+</android.support.design.widget.CoordinatorLayout>

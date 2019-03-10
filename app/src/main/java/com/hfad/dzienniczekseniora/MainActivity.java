@@ -1,6 +1,8 @@
 package com.hfad.dzienniczekseniora;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,9 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button addNote = findViewById(R.id.addNote);
-
-        addNote.setOnClickListener(new View.OnClickListener() {
+        Button addNoteButton = findViewById(R.id.addNote);
+        addNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //przejscie do nowego okna wyboru notatki do dodania do obecnego dnia
@@ -25,16 +26,46 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button resultButton = findViewById(R.id.result);
+        resultButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //przejscie do okna wyswietlania wynikow z 30 dni
 
-        CalendarView calendarView = findViewById(R.id.calendarView);
+                Intent intentResult = new Intent(MainActivity.this, ResultFrom30Days.class);
+                startActivity(intentResult);
+            }
+        });
 
+        final CalendarView calendarView = findViewById(R.id.calendarView);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                //przejscie do okna wyswietlenia notatek z wybranego dnia
+            public void onSelectedDayChange(CalendarView view, final int year, final int month, final int dayOfMonth) {
 
-                Intent intentShowData = new Intent(MainActivity.this, ShowData.class);
-                startActivity(intentShowData);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                alertDialogBuilder.setMessage("WYBIERZ: ");
+
+                alertDialogBuilder.setPositiveButton(R.string.addVisit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //przejscie do okna dodania wizyty
+                        Intent intentAddVisit = new Intent(MainActivity.this, AddVisit.class);
+                        intentAddVisit.putExtra("date", year+"-"+month+"-"+dayOfMonth);
+                        startActivity(intentAddVisit);
+                    }
+                });
+
+                alertDialogBuilder.setNegativeButton(R.string.viewNote, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //przejscie do okna wyswietlenia notatek z wybranego dnia trzeba zablokowac tam buttony
+
+                        Intent intentChoiceData = new Intent(MainActivity.this, ChoiceData.class);
+                        startActivity(intentChoiceData);
+                    }
+                });
+
+                alertDialogBuilder.show();
             }
         });
     }

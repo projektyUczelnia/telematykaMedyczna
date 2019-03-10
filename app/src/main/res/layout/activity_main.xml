@@ -23,12 +23,20 @@
             android:layout_margin="10dp"
             android:text="@string/addNote" />
 
+        <Button
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/resultButton" />
+
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:clickable="true"
-            android:focusable="auto" />
+            android:focusable="auto"
+            android:focusableInTouchMode="false" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -5,9 +5,13 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //przejscie do okna dodania wizyty
                         Intent intentAddVisit = new Intent(MainActivity.this, AddVisit.class);
-                        intentAddVisit.putExtra("date", year+"-"+month+"-"+dayOfMonth);
+                        intentAddVisit.putExtra("date", year + "-" + month + "-" + dayOfMonth);
                         startActivity(intentAddVisit);
                     }
                 });
@@ -69,4 +73,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //dodaje button do actionBaru
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //megoda umożliwiająca wykonanie akcji po naciśnięciu buttona w action barze
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.changeReferenceValuesButton) {
+           Intent intent = new Intent(this,ChangeReferenceValues.class);
+           startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

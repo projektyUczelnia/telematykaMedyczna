@@ -2,7 +2,10 @@
     <string name="app_name">DzienniczekSeniora</string>
     <string name="addNote">DODAJ NOTATKĘ</string>
     <string name="weight">WAGA</string>
+    <string name="update">UAKTUALNIJ \n PRZEDZIAŁ</string>
+    <string name="newValue">NOWY PRZEDZIAŁ</string>
     <string name="temperature">TEMPERATURA</string>
+    <string name="updateDataText">Uakyalnij Dane</string>
     <string name="pressure">CIŚNIENIE</string>
     <string name="glucose">POZIOM CUKRU</string>
     <string name="visit">WIZYTA U LEKARZA</string>

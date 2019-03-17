@@ -10,7 +10,7 @@
     <string name="glucose">POZIOM CUKRU</string>
     <string name="visit">WIZYTA U LEKARZA</string>
     <string name="other">INNE</string>
-    <string name="result">Wynik: </string>
+    <string name="result">Wyniki: </string>
     <string name="resultButton">WYŚWIETL WYNIKI</string>
     <string name="addVisit">DODAJ WIZYTĘ</string>
     <string name="viewNote">WYŚWIETL DANE</string>

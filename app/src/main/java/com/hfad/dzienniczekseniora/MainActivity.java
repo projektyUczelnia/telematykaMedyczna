@@ -1,5 +1,6 @@
 package com.hfad.dzienniczekseniora;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -13,12 +14,20 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        final String currentDate = calendar.get(Calendar.DAY_OF_MONTH)+"-"+calendar.get(Calendar.MONTH)+"-"+calendar.get(Calendar.YEAR);
 
         Button addNoteButton = findViewById(R.id.addNote);
         addNoteButton.setOnClickListener(new View.OnClickListener() {
@@ -45,30 +54,39 @@ public class MainActivity extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, final int year, final int month, final int dayOfMonth) {
-
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                String chooseDate = dayOfMonth+"-"+month+"-"+year;
+                Date currentDateDate = null;
+                Date chooseDateDate = null;
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
                 alertDialogBuilder.setMessage("WYBIERZ: ");
 
-                alertDialogBuilder.setPositiveButton(R.string.addVisit, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //przejscie do okna dodania wizyty
-                        Intent intentAddVisit = new Intent(MainActivity.this, AddVisit.class);
-                        intentAddVisit.putExtra("date", year + "-" + month + "-" + dayOfMonth);
-                        startActivity(intentAddVisit);
-                    }
-                });
-
-                alertDialogBuilder.setNegativeButton(R.string.viewNote, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //przejscie do okna wyswietlenia notatek z wybranego dnia trzeba zablokowac tam buttony
-
-                        Intent intentChoiceData = new Intent(MainActivity.this, ChoiceData.class);
-                        startActivity(intentChoiceData);
-                    }
-                });
-
+                try {
+                    currentDateDate = simpleDateFormat.parse(currentDate);
+                    chooseDateDate = simpleDateFormat.parse(chooseDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if(chooseDateDate.after(currentDateDate) || chooseDateDate.equals(currentDateDate)) {
+                    alertDialogBuilder.setPositiveButton(R.string.addVisit, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intentAddVisit = new Intent(MainActivity.this, AddVisit.class);
+                            intentAddVisit.putExtra("date", year + "-" + month + "-" + dayOfMonth);
+                            startActivity(intentAddVisit);
+                        }
+                    });
+                }
+                if(chooseDateDate.before(currentDateDate) || chooseDateDate.equals(currentDateDate)) {
+                    alertDialogBuilder.setNegativeButton(R.string.viewNote, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intentChoiceData = new Intent(MainActivity.this, ChoiceData.class);
+                            intentChoiceData.putExtra("showData", true);
+                            startActivity(intentChoiceData);
+                        }
+                    });
+                }
                 alertDialogBuilder.show();
             }
         });

@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.NumberPicker;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.hfad.dzienniczekseniora.changeReferenceValues.BloodPressure;
+import com.hfad.dzienniczekseniora.changeReferenceValues.Glucose;
+import com.hfad.dzienniczekseniora.changeReferenceValues.SingkeEdditLayoutClass;
 
 public class ChangeReferenceValues extends AppCompatActivity {
     /**
@@ -28,7 +27,7 @@ public class ChangeReferenceValues extends AppCompatActivity {
     }
 
     /**
-     * clast that define Adapter forList view
+     * Class that define Adapter for list view
      */
     class CustomAdapter extends BaseAdapter {
         int[] sectionName = {R.string.glucose, R.string.pressure};
@@ -49,7 +48,7 @@ public class ChangeReferenceValues extends AppCompatActivity {
         }
 
         /**
-         * method define every part of single_eddit_layout
+         * Method define every part of single_eddit_layout
          *
          * @param position
          * @param convertView
@@ -59,33 +58,17 @@ public class ChangeReferenceValues extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             View view = getLayoutInflater().inflate(R.layout.single_eddit_layyout, null);
-            Button changeValueButton = view.findViewById(R.id.changeValueButton);
-            TextView lastValues = view.findViewById(R.id.lastValueTextView);
-            TextView sectionName = view.findViewById(R.id.sectionName);
-            final EditText updateValues = view.findViewById(R.id.updateValueEditText);
-            //todo obecny przediał zamienić na obecny przedział
-            lastValues.setText("obecny przedział");
-            sectionName.setText(this.sectionName[position]);
-            changeValueButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //todo rozważam tutaj inna opcje tez ale nie wiem jeszcze jaka
-                    // w zależności od pozycji bedzie sie zmieniać funconalność klaiwsza
-                    switch (position) {
-                        case 0:
-                            //onClick dla poziomu cukry
-                            Toast.makeText(getApplicationContext(), "cukier", Toast.LENGTH_LONG).show();
-                            //todo metoa uaktualniajaca poziomu cukru
-                            break;
-                        case 1:
-                            //onClick dla cisnienia
-                            Toast.makeText(getApplicationContext(), "cisnienie", Toast.LENGTH_LONG).show();
-                            //todo metoa uaktualniajaca cisnienie
-                            break;
-                    }
-                }
-            });
-            return view;
-        }
+          switch (position) {
+              case 0:
+                  SingkeEdditLayoutClass singkeEdditLayoutClass = new BloodPressure(view,position,
+                          getApplicationContext());
+                  break;
+              case 1:
+                  SingkeEdditLayoutClass singkeEdditLayoutClass2 = new Glucose(view,position,
+                          getApplicationContext());
+                  break;
+          }
+        return view;}
+
     }
 }

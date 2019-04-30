@@ -17,127 +17,139 @@
             android:id="@+id/weightButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_margin="2dp"
             android:text="@string/weight"
+            android:textSize="18sp"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
             app:layout_gravity="fill"
-            android:layout_margin="2dp"/>
+            app:layout_rowWeight="1" />
 
         <TextView
             android:id="@+id/weightView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="2"
-            app:layout_gravity="fill"
-            android:text="@string/result"
             android:layout_margin="2dp"
-            android:scrollbars = "vertical"/>
+            android:scrollbars="vertical"
+            android:text="@string/result"
+            android:textSize="18sp"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="2" />
 
         <Button
             android:id="@+id/temperatureButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="2"
-            app:layout_rowWeight="1"
-            app:layout_gravity="fill"
+            android:layout_margin="2dp"
             android:text="@string/temperature"
-            android:layout_margin="2dp"/>
+            android:textSize="18sp"
+            app:layout_columnWeight="2"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
 
         <TextView
             android:id="@+id/temperatureView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="2"
-            app:layout_rowWeight="2"
-            app:layout_gravity="fill"
-            android:text="@string/result"
             android:layout_margin="2dp"
-            android:scrollbars = "vertical"/>
+            android:scrollbars="vertical"
+            android:text="@string/result"
+            android:textSize="18sp"
+            app:layout_columnWeight="2"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="2" />
 
         <Button
             android:id="@+id/glucoseButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="3"
-            app:layout_rowWeight="1"
-            app:layout_gravity="fill"
+            android:layout_margin="2dp"
             android:text="@string/glucose"
-            android:layout_margin="2dp"/>
+            android:textSize="18sp"
+            app:layout_columnWeight="3"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
 
         <TextView
             android:id="@+id/glucoseView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="3"
-            app:layout_rowWeight="2"
-            app:layout_gravity="fill"
-            android:text="@string/result"
             android:layout_margin="2dp"
-            android:scrollbars = "vertical"/>
+            android:scrollbars="vertical"
+            android:text="@string/result"
+            android:textSize="18sp"
+            app:layout_columnWeight="3"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="2" />
 
         <Button
             android:id="@+id/pressureButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="4"
-            app:layout_rowWeight="1"
-            app:layout_gravity="fill"
+            android:layout_margin="2dp"
             android:text="@string/pressure"
-            android:layout_margin="2dp"/>
+            android:textSize="18sp"
+            app:layout_columnWeight="4"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
 
         <TextView
             android:id="@+id/pressureView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="4"
-            app:layout_rowWeight="2"
-            app:layout_gravity="fill"
-            android:text="@string/result"
             android:layout_margin="2dp"
-            android:scrollbars = "vertical"/>
+            android:scrollbars="vertical"
+            android:text="@string/result"
+            android:textSize="18sp"
+            app:layout_columnWeight="4"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="2" />
 
         <Button
             android:id="@+id/visitButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="5"
-            app:layout_rowWeight="1"
-            app:layout_gravity="fill"
+            android:layout_margin="2dp"
             android:text="@string/visit"
-            android:layout_margin="2dp"/>
+            android:textSize="18sp"
+            app:layout_columnWeight="5"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
 
         <TextView
             android:id="@+id/visitView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="5"
-            app:layout_rowWeight="2"
-            app:layout_gravity="fill"
-            android:text="@string/result"
             android:layout_margin="2dp"
-            android:scrollbars = "vertical"/>
+            android:scrollbars="vertical"
+            android:text="@string/result"
+            android:textSize="18sp"
+            app:layout_columnWeight="5"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="2" />
 
         <Button
             android:id="@+id/otherButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="6"
-            app:layout_rowWeight="1"
-            app:layout_gravity="fill"
+            android:layout_margin="2dp"
             android:text="@string/other"
-            android:layout_margin="2dp"/>
+            android:textSize="18sp"
+            app:layout_columnWeight="6"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
 
         <TextView
             android:id="@+id/otherView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_columnWeight="6"
-            app:layout_rowWeight="2"
-            app:layout_gravity="fill"
-            android:text="@string/result"
             android:layout_margin="2dp"
-            android:scrollbars = "vertical"/>
+            android:scrollbars="vertical"
+            android:text="@string/result"
+            android:textSize="18sp"
+            app:layout_columnWeight="6"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="2" />
 
     </android.support.v7.widget.GridLayout>
 </android.support.design.widget.CoordinatorLayout>

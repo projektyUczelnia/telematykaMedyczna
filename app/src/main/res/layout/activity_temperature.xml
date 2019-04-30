@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TemperatureActivity">
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:columnCount="1"
+        app:rowCount="4">
+
+        <Button
+            android:id="@+id/addTime3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/addTime"
+            android:textSize="24sp"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center|fill"
+            app:layout_rowWeight="1" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="2" />
+
+        <android.support.v7.widget.GridLayout
+            app:columnCount="2"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="3"
+            app:rowCount="1">
+
+            <NumberPicker
+                android:id="@+id/lower_value_picker"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center"
+                app:layout_columnWeight="1"
+                app:layout_constraintBottom_toTopOf="@+id/higher_value_left_nr_picker"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sectionName"
+                app:layout_rowWeight="1"></NumberPicker>
+
+            <NumberPicker
+                android:id="@+id/lower_value_picker2"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center"
+                app:layout_columnWeight="2"
+                app:layout_constraintBottom_toTopOf="@+id/higher_value_left_nr_picker"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sectionName"
+                app:layout_rowWeight="1"></NumberPicker>
+        </android.support.v7.widget.GridLayout>
+
+        <Button
+            android:id="@+id/saveButton3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/save"
+            android:textSize="24sp"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="4" />
+
+    </android.support.v7.widget.GridLayout>
+</android.support.constraint.ConstraintLayout>

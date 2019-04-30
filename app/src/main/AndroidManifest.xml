@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChangeReferenceValues"></activity>
+        <activity android:name=".ChangeReferenceValues" />
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
@@ -25,6 +25,11 @@
         <activity android:name=".ChoiceData" />
         <activity android:name=".AddVisit" />
         <activity android:name=".ResultFrom30Days" />
+        <activity android:name=".WeightActivity" />
+        <activity android:name=".TemperatureActivity" />
+        <activity android:name=".GlucoseActivity" />
+        <activity android:name=".PressureActivity" />
+        <activity android:name=".OtherActivity"></activity>
     </application>
 
 </manifest>

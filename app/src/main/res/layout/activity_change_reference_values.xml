@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="40dp"
-        android:text="Uakyalnij Dane" />
+        android:text="Uaktualnij Dane" />
 
     <ListView
         android:id="@+id/valueTochangeList"

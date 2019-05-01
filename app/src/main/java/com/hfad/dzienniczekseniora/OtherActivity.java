@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hfad.dzienniczekseniora.database.DbController;
+import com.hfad.dzienniczekseniora.database.EnumTable;
+
 import java.util.Calendar;
 
 public class OtherActivity extends AppCompatActivity {
@@ -19,11 +22,11 @@ public class OtherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_other);
 
         Intent intent = getIntent();
-        String date = intent.getStringExtra("date");
+        final String date = intent.getStringExtra("date");
 
         Button addTimeButton = findViewById(R.id.addTime6);
         final TextView timeTextView = findViewById(R.id.editText9);
-        final TextView timeTextViewGlucose = findViewById(R.id.textView11);
+        final TextView TextViewGlucose = findViewById(R.id.textView11);
         Button saveButton = findViewById(R.id.saveButton6);
 
         addTimeButton.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +54,16 @@ public class OtherActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //zapis danych do bazy danych
 
+                DbController db = new DbController(OtherActivity.this);
+                db.insert_data(EnumTable.OTHER.returnTableConstValues(), date,
+                        timeTextView.getText().toString(), TextViewGlucose.getText().toString());
+
                 //jesli sie uda to:
-                Intent intentBackToMainActivity = new Intent(OtherActivity.this, MainActivity.class);
+                Intent intentBackToMainActivity = new Intent(OtherActivity.this, ChoiceData.class);
+                Calendar cal = Calendar.getInstance();
+                intentBackToMainActivity.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                        "-" + cal.get(Calendar.DAY_OF_MONTH));
+                intentBackToMainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentBackToMainActivity);
             }
         });

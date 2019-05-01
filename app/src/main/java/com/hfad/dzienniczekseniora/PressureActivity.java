@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hfad.dzienniczekseniora.database.DbController;
+import com.hfad.dzienniczekseniora.database.EnumTable;
+
 import java.util.Calendar;
 
 public class PressureActivity extends AppCompatActivity {
@@ -20,13 +23,13 @@ public class PressureActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pressure);
 
         Intent intent = getIntent();
-        String date = intent.getStringExtra("date");
+        final String date = intent.getStringExtra("date");
 
         Button addTimeButton = findViewById(R.id.addTime5);
         final TextView timeTextView = findViewById(R.id.editText7);
         Button saveButton = findViewById(R.id.saveButton5);
-        final TextView timeTextViewPressure1 = findViewById(R.id.editText8);
-        final TextView timeTextViewPressure2 = findViewById(R.id.editText10);
+        final TextView TextViewPressure1 = findViewById(R.id.editText8);
+        final TextView TextViewPressure2 = findViewById(R.id.editText10);
 
         addTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +56,17 @@ public class PressureActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //zapis danych do bazy danych
 
+                DbController db = new DbController(PressureActivity.this);
+                db.insert_data(EnumTable.PRESSURE.returnTableConstValues(), date,
+                        timeTextView.getText().toString(), TextViewPressure1.getText() +"/"+
+                                TextViewPressure2.getText());
+
                 //jesli sie uda to:
-                Intent intentBackToMainActivity = new Intent(PressureActivity.this, MainActivity.class);
+                Intent intentBackToMainActivity = new Intent(PressureActivity.this, ChoiceData.class);
+                Calendar cal = Calendar.getInstance();
+                intentBackToMainActivity.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                        "-" + cal.get(Calendar.DAY_OF_MONTH));
+                intentBackToMainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentBackToMainActivity);
             }
         });

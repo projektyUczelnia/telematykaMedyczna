@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import com.hfad.dzienniczekseniora.database.DbController;
+import com.hfad.dzienniczekseniora.database.EnumTable;
+
 import java.util.Calendar;
 
 public class TemperatureActivity extends AppCompatActivity {
@@ -19,16 +22,16 @@ public class TemperatureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature);
         Intent intent = getIntent();
-        String date = intent.getStringExtra("date");
+        final String date = intent.getStringExtra("date");
 
         Button addTimeButton = findViewById(R.id.addTime3);
         final TextView timeTextView = findViewById(R.id.editText4);
         Button saveButton = findViewById(R.id.saveButton3);
 
-        NumberPicker numberPicker = findViewById(R.id.lower_value_picker);
+        final NumberPicker numberPicker = findViewById(R.id.lower_value_picker);
         numberPicker.setMinValue(35);
         numberPicker.setMaxValue(40);
-        NumberPicker numberPicker2 = findViewById(R.id.lower_value_picker2);
+        final NumberPicker numberPicker2 = findViewById(R.id.lower_value_picker2);
         numberPicker2.setMinValue(0);
         numberPicker2.setMaxValue(9);
 
@@ -56,10 +59,18 @@ public class TemperatureActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //zapis danych do bazy danych
+                DbController db = new DbController(TemperatureActivity.this);
+                db.insert_data(EnumTable.TEMPERATURE.returnTableConstValues(), date,
+                        timeTextView.getText().toString(), String.valueOf((numberPicker.getValue()+ numberPicker2.getValue())));
 
                 //jesli sie uda to:
-                Intent intentBackToMainActivity = new Intent(TemperatureActivity.this, MainActivity.class);
+                Intent intentBackToMainActivity = new Intent(TemperatureActivity.this, ChoiceData.class);
+                Calendar cal = Calendar.getInstance();
+                intentBackToMainActivity.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                        "-" + cal.get(Calendar.DAY_OF_MONTH));
+                intentBackToMainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentBackToMainActivity);
+
             }
         });
     }

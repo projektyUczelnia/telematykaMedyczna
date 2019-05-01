@@ -40,6 +40,8 @@
             android:id="@+id/timeTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:enabled="false"
+            android:focusable="false"
             android:layout_marginTop="20dp"
             android:textAlignment="center"
             android:textSize="24sp"

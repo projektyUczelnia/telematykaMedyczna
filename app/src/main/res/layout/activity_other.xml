@@ -26,6 +26,8 @@
             android:id="@+id/editText9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:enabled="false"
+            android:focusable="false"
             android:ems="10"
             android:inputType="date"
             android:textAlignment="center"

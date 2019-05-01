@@ -106,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //przejscie do nowego okna wyboru notatki do dodania do obecnego dnia
                 Intent intentChoiceData = new Intent(MainActivity.this, ChoiceData.class);
+                Calendar cal = Calendar.getInstance();
+                intentChoiceData.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                        "-" + cal.get(Calendar.DAY_OF_MONTH));
                 startActivity(intentChoiceData);
             }
         });
@@ -117,6 +120,9 @@ public class MainActivity extends AppCompatActivity {
                 //przejscie do okna wyswietlania wynikow z 30 dni
 
                 Intent intentResult = new Intent(MainActivity.this, ResultFrom30Days.class);
+                Calendar cal = Calendar.getInstance();
+                intentResult.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                        "-" + cal.get(Calendar.DAY_OF_MONTH));
                 startActivity(intentResult);
             }
         });
@@ -154,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intentChoiceData = new Intent(MainActivity.this, ChoiceData.class);
                             intentChoiceData.putExtra("showData", true);
+                            intentChoiceData.putExtra("date", year + "-" + month + "-" + dayOfMonth);
                             startActivity(intentChoiceData);
                         }
                     });

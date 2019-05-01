@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.hfad.dzienniczekseniora.database.DbController;
+import com.hfad.dzienniczekseniora.database.EnumTable;
+
 import java.util.Calendar;
 
 public class AddVisit extends AppCompatActivity {
@@ -20,12 +23,13 @@ public class AddVisit extends AppCompatActivity {
         setContentView(R.layout.add_visit);
 
         Intent intent = getIntent();
-        String date = intent.getStringExtra("date");
+        final String date = intent.getStringExtra("date");
 
         Button addTimeButton = findViewById(R.id.addTime);
         Button saveButton = findViewById(R.id.saveButton);
         final TextView timeTextView = findViewById(R.id.timeTextView);
         final TextView dateTextView = findViewById(R.id.dataView);
+        final TextView TextViewInformations = findViewById(R.id.editText3);
 
         dateTextView.setText(date);
 
@@ -54,8 +58,20 @@ public class AddVisit extends AppCompatActivity {
             public void onClick(View v) {
                 //zapis danych do bazy danych
 
+                DbController db = new DbController(AddVisit.this);
+                db.insert_data(EnumTable.VISIT.returnTableConstValues(), date,
+                        timeTextView.getText().toString(), TextViewInformations.getText().toString());
+
                 //jesli sie uda to:
-                Intent intentBackToMainActivity = new Intent(AddVisit.this, MainActivity.class);
+                Intent intentBackToMainActivity = new Intent(AddVisit.this, ChoiceData.class);
+                intentBackToMainActivity.putExtra("date", date);
+                Calendar cal = Calendar.getInstance();
+                String currentDate = cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                        "-" + cal.get(Calendar.DAY_OF_MONTH);
+                if (!date.equals(currentDate)) {
+                    intentBackToMainActivity.putExtra("showData", true);
+                }
+                intentBackToMainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentBackToMainActivity);
             }
         });

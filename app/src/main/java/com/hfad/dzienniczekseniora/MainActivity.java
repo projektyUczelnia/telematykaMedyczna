@@ -85,19 +85,7 @@ public class MainActivity extends AppCompatActivity {
              NIZEJ MOZESZ ZOBACZYC ZASTOSOWANIE W PRAKTYCE:
 
       */
-        //przykład
-        db = new DbController(this);
 
-        db.insert_data(EnumTable.WEIGHT.returnTableConstValues(),"data","czas","war");
-        if (db.getWeightData("data")!=null) {
-            List lol = db.getWeightData("data");
-            int count = lol.size();
-            Log.d("lol", String.valueOf(count));
-            List col1 = (List) lol.get(0);
-            Log.d("lol", (String) col1.get(0) + "\n" + col1.get(1) + "\n" + col1.get(2) + "\n" + col1.get(3));
-        }else  Log.d("lol", "nie ma danych");
-
-        //koniec przykłaadu
 
 
         Button addNoteButton = findViewById(R.id.addNote);

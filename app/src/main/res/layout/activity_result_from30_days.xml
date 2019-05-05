@@ -6,4 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".ResultFrom30Days">
 
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        app:columnCount="1"
+        app:rowCount="4">
+
+        <Button
+            android:id="@+id/weightChart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:text="@string/weight"
+            android:textSize="18sp"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
+
+        <Button
+            android:id="@+id/temperatureChart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/temperature"
+            android:textSize="18sp"
+            app:layout_columnWeight="2"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
+
+        <Button
+            android:id="@+id/glucoseChart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/glucose"
+            android:textSize="18sp"
+            app:layout_columnWeight="3"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
+
+        <Button
+            android:id="@+id/pressureChart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:text="@string/pressure"
+            android:textSize="18sp"
+            app:layout_columnWeight="4"
+            app:layout_gravity="fill"
+            app:layout_rowWeight="1" />
+    </android.support.v7.widget.GridLayout>
 </android.support.constraint.ConstraintLayout>

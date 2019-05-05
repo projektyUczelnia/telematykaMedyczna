@@ -29,7 +29,11 @@
         <activity android:name=".TemperatureActivity" />
         <activity android:name=".GlucoseActivity" />
         <activity android:name=".PressureActivity" />
-        <activity android:name=".OtherActivity"></activity>
+        <activity android:name=".OtherActivity" />
+        <activity android:name=".WeightChartActivity" />
+        <activity android:name=".TemperatureChartActivity" />
+        <activity android:name=".GlucoseChartActivity" />
+        <activity android:name=".PressureChartActivity"></activity>
     </application>
 
 </manifest>

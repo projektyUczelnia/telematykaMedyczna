@@ -240,9 +240,10 @@ public class ChoiceData extends AppCompatActivity {
 
                 SpannableString pressureColor= new SpannableString(String.valueOf(pressure));
                 if(systolic>bloodPressureSharePreferences.getHigherSystolicPressure() ||
-                        systolic<bloodPressureSharePreferences.getLowerSystolicPressure() ||
-                        diastolic>bloodPressureSharePreferences.getHigherDiastolicPressure() ||
-                        diastolic<bloodPressureSharePreferences.getLowerDiastolicPressure()){
+                      //  systolic<bloodPressureSharePreferences.getLowerSystolicPressure() ||
+                        diastolic>bloodPressureSharePreferences.getHigherDiastolicPressure()
+                      //  diastolic<bloodPressureSharePreferences.getLowerDiastolicPressure()
+                        || (systolic-diastolic)<40){
                     pressureColor.setSpan(new ForegroundColorSpan(Color.RED), 0, pressureColor.length(), 0);
                 }
                 else{

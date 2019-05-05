@@ -82,4 +82,28 @@ public class DbController extends DbHelper {
         return putValuesToList(res);
     }
 
+    public List getTemperature30Data() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + EnumTable.TEMPERATURE.returnTableConstValues().get(0) + " WHERE " + EnumTable.TEMPERATURE.returnTableConstValues().get(1) +" >= date('now', '-30 day');", null);
+        return putValuesToList(res);
+    }
+
+    public List getWeight30Data() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + EnumTable.WEIGHT.returnTableConstValues().get(0) + " WHERE " + EnumTable.WEIGHT.returnTableConstValues().get(1) +" >= date('now', '-30 day');", null);
+        return putValuesToList(res);
+    }
+
+    public List getPressure30Data() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + EnumTable.PRESSURE.returnTableConstValues().get(0) + " WHERE " + EnumTable.PRESSURE.returnTableConstValues().get(1) +" >= date('now', '-30 day');", null);
+        return putValuesToList(res);
+    }
+
+    public List getGlucose30Data() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + EnumTable.GLUCOSE.returnTableConstValues().get(0) + " WHERE " + EnumTable.GLUCOSE.returnTableConstValues().get(1) +" >= date('now', '-30 day');", null);
+        return putValuesToList(res);
+    }
+
 }

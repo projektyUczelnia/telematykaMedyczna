@@ -68,5 +68,20 @@ public class DbHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    public List getTemperature30Data()  {
+        return null;
+    }
+
+    public List getWeight30Data()  {
+        return null;
+    }
+    public List getPressure30Data()  {
+        return null;
+    }
+    public List getGlucose30Data()  {
+        return null;
+    }
+
+    public void getDelete(){}
 
 }

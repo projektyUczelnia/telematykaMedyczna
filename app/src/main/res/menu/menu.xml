@@ -10,4 +10,24 @@
         android:id="@+id/DeleteWeight"
         android:title="usuń wagę (wszystkie dane)"
         app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/DeletePressure"
+        android:title="usuń cisnienie (wszystkie dane)"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/DeleteTemperature"
+        android:title="usuń temperature (wszystkie dane)"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/DeleteVisits"
+        android:title="usuń wizyty (wszystkie dane)"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/DeleteOthers"
+        android:title="usuń inne (wszystkie dane)"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/DeleteGlucose"
+        android:title="usuń poziom cukru (wszystkie dane)"
+        app:showAsAction="collapseActionView" />
 </menu>

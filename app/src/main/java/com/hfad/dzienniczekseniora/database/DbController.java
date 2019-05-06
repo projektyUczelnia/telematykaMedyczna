@@ -30,6 +30,11 @@ public class DbController extends DbHelper {
         }
     }
 
+    /**
+     * Method puts all data into List
+     * @param res
+     * @return
+     */
     private List putValuesToList(Cursor res) {
         List<List> data = new ArrayList<>();
         if (res.getCount() == 0) {
@@ -104,6 +109,25 @@ public class DbController extends DbHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + EnumTable.GLUCOSE.returnTableConstValues().get(0) + " WHERE " + EnumTable.GLUCOSE.returnTableConstValues().get(1) +" >= date('now', '-30 day');", null);
         return putValuesToList(res);
+    }
+    public List getAllWeight() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + EnumTable.WEIGHT.returnTableConstValues().get(0),null);
+        return putValuesToList(res);
+    }
+
+    public void getDeleteWeight() {
+        db.execSQL("delete from "+ EnumTable.WEIGHT.returnTableConstValues().get(0));
+    }public void getDeleteGlucose() {
+        db.execSQL("delete from "+ EnumTable.GLUCOSE.returnTableConstValues().get(0));
+    }public void getDeleteTemperature() {
+        db.execSQL("delete from "+ EnumTable.TEMPERATURE.returnTableConstValues().get(0));
+    }public void getDeleteOtherData() {
+        db.execSQL("delete from "+ EnumTable.OTHER.returnTableConstValues().get(0));
+    }public void getDeleteVisits() {
+        db.execSQL("delete from "+ EnumTable.VISIT.returnTableConstValues().get(0));
+    }public void getDeletePressure() {
+        db.execSQL("delete from "+ EnumTable.PRESSURE.returnTableConstValues().get(0));
     }
 
 }

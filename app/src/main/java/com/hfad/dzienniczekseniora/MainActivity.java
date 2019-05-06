@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.CalendarView;
 
 import com.hfad.dzienniczekseniora.database.DbHelper;
-import com.hfad.dzienniczekseniora.database.EnumTable;
 import com.hfad.dzienniczekseniora.database.DbController;
 
 import java.text.ParseException;
@@ -25,13 +24,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     DbHelper db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        final String currentDate = calendar.get(Calendar.DAY_OF_MONTH)+"-"+calendar.get(Calendar.MONTH)+"-"+calendar.get(Calendar.YEAR);
+        final String currentDate = calendar.get(Calendar.DAY_OF_MONTH) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.YEAR);
         /*
         PORADNIK DLA MARTY!!!!!!!!!!!!!!!!
 
@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
       */
 
 
-
         Button addNoteButton = findViewById(R.id.addNote);
         addNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, final int year, final int month, final int dayOfMonth) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                String chooseDate = dayOfMonth+"-"+month+"-"+year;
+                String chooseDate = dayOfMonth + "-" + month + "-" + year;
                 Date currentDateDate = null;
                 Date chooseDateDate = null;
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
@@ -132,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                if(chooseDateDate.after(currentDateDate) || chooseDateDate.equals(currentDateDate)) {
+                if (chooseDateDate.after(currentDateDate) || chooseDateDate.equals(currentDateDate)) {
                     alertDialogBuilder.setPositiveButton(R.string.addVisit, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -142,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 }
-                if(chooseDateDate.before(currentDateDate) || chooseDateDate.equals(currentDateDate)) {
+                if (chooseDateDate.before(currentDateDate) || chooseDateDate.equals(currentDateDate)) {
                     alertDialogBuilder.setNegativeButton(R.string.viewNote, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -170,10 +169,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.changeReferenceValuesButton) {
-           Intent intent = new Intent(this,ChangeReferenceValues.class);
-           startActivity(intent);
+            Intent intent = new Intent(this, ChangeReferenceValues.class);
+            startActivity(intent);
+        }
+        //TODO to ponizej wszystko mozna wywalić jezeli tylko nie jest nam potrzebny klawisz z usówaniem danych oraz w menu.xml usunać item o id:DeleteWeight
+        else if (item.getItemId() == R.id.DeleteWeight) {
+            db = new DbController(this);
+            CheckIfAllDataFromTableApears(db.getAllWeight());
+            db.getDeleteWeight();
+            CheckIfAllDataFromTableApears(db.getAllWeight());
         }
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Method shows in log all data from dbList
+     *
+     * @param dbList
+     */
+    //TODO wyświetla w logach wszystkie dane mysle ze moze sie przydac
+    public void CheckIfAllDataFromTableApears(List dbList) {
+        List data = null;
+        if (dbList != null) {
+            data = dbList;
+        }
+        if (data != null) {
+            for (int i = 0; i < data.size(); i++) {
+                List col1 = (List) data.get(i);
+                Log.d("data", (String) col1.get(0) + "\n" + col1.get(1) + "\n" + col1.get(2) + "\n" + col1.get(3));
+            }
+            Log.d("data", "null");
+        }
+    }
 }

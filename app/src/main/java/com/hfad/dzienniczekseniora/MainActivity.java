@@ -168,16 +168,34 @@ public class MainActivity extends AppCompatActivity {
     //megoda umożliwiająca wykonanie akcji po naciśnięciu buttona w action barze
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.changeReferenceValuesButton) {
-            Intent intent = new Intent(this, ChangeReferenceValues.class);
-            startActivity(intent);
-        }
+        db = new DbController(this);
         //TODO to ponizej wszystko mozna wywalić jezeli tylko nie jest nam potrzebny klawisz z usówaniem danych oraz w menu.xml usunać item o id:DeleteWeight
-        else if (item.getItemId() == R.id.DeleteWeight) {
-            db = new DbController(this);
-            CheckIfAllDataFromTableApears(db.getAllWeight());
-            db.getDeleteWeight();
-            CheckIfAllDataFromTableApears(db.getAllWeight());
+        switch (item.getItemId()) {
+            case R.id.changeReferenceValuesButton:
+                Intent intent = new Intent(this, ChangeReferenceValues.class);
+                startActivity(intent);
+                break;
+            case R.id.DeleteWeight:
+                CheckIfAllDataFromTableApears(db.getAllWeight());
+                db.getDeleteWeight();
+                CheckIfAllDataFromTableApears(db.getAllWeight());
+                break;
+            case R.id.DeleteGlucose:
+                db.getDeleteGlucose();
+                break;
+            case R.id.DeleteOthers:
+                db.getDeleteOtherData();
+                break;
+            case R.id.DeletePressure:
+                db.getDeletePressure();
+                break;
+            case R.id.DeleteTemperature:
+                db.getDeleteTemperature();
+                break;
+            case R.id.DeleteVisits:
+                db.getDeleteVisits();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

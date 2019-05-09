@@ -15,6 +15,7 @@ import android.widget.CalendarView;
 
 import com.hfad.dzienniczekseniora.database.DbHelper;
 import com.hfad.dzienniczekseniora.database.DbController;
+import com.hfad.dzienniczekseniora.database.SQLiteExcel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -194,6 +195,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.DeleteVisits:
                 db.getDeleteVisits();
+                break;
+            case R.id.ExportDataToExcel:
+                SQLiteExcel sqLiteExcel = new SQLiteExcel(getApplicationContext());
+                sqLiteExcel.ifFileExistsAndCreate();
+                sqLiteExcel.checkIfXslCreated();
+                startActivity(Intent.createChooser(sqLiteExcel.sendEmail(), "Send it out!"));
                 break;
 
         }

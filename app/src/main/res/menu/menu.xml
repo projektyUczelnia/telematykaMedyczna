@@ -30,4 +30,8 @@
         android:id="@+id/DeleteGlucose"
         android:title="usuń poziom cukru (wszystkie dane)"
         app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/ExportDataToExcel"
+        android:title="Prześlij dane do excela"
+        app:showAsAction="collapseActionView" />
 </menu>

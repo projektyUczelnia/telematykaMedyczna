@@ -62,7 +62,8 @@ public class WeightActivity extends AppCompatActivity {
                     //jesli sie uda to:
                     Intent intentBackToMainActivity = new Intent(WeightActivity.this, ChoiceData.class);
                     Calendar cal = Calendar.getInstance();
-                    intentBackToMainActivity.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                    int month = cal.get(Calendar.MONTH);
+                    intentBackToMainActivity.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                         "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentBackToMainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentBackToMainActivity);

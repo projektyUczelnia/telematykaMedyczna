@@ -11,6 +11,8 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.hfad.dzienniczekseniora.database.DbController;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class TemperatureChartActivity extends AppCompatActivity {
@@ -25,13 +27,24 @@ public class TemperatureChartActivity extends AppCompatActivity {
         ArrayList<String> date = new ArrayList<String>();
         ArrayList<BarEntry> value = new ArrayList<>();
 
+        String nowDate = Calendar.YEAR +"-"+Calendar.MONTH+"-"+Calendar.DAY_OF_MONTH ;
+        MainActivity mainActivity = new MainActivity();
+        Date dateNow = mainActivity.convertToDate(nowDate);
+
+        int j=0;
+
         try {
             for (int i = 0; i < list.size(); i++) {
                 List object = (List) list.get(i);
-                date.add(object.get(1).toString());
-                System.out.print("Data: " + object.get(1).toString() + "\n");
-                value.add(new BarEntry((Float.parseFloat(object.get(3).toString())), i));
-                System.out.print("Wartość: " + object.get(3).toString() + "\n");
+                Date dateFromList = mainActivity.convertToDate(object.get(1).toString());
+
+                if(dateFromList.after(dateNow)) {
+                    date.add(object.get(1).toString());
+                    System.out.print("Data: " + object.get(1).toString() + "\n");
+                    value.add(new BarEntry((Float.parseFloat(object.get(3).toString())), j));
+                    System.out.print("Wartość: " + object.get(3).toString() + "\n");
+                    j++;
+                }
             }
 
             BarDataSet dataset = new BarDataSet(value, "w stopniach Celsjusza");

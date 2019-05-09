@@ -33,60 +33,6 @@ public class MainActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         final String currentDate = calendar.get(Calendar.DAY_OF_MONTH) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.YEAR);
-        /*
-        PORADNIK DLA MARTY!!!!!!!!!!!!!!!!
-
-        dane przechowywane w stringu!!!!!!!!!!!!!!!
-
-         JAK DODAWAC DANE DO BD:
-
-            db = new DbController(this);
-
-            DANE DO TABELI TEMPERATURY:
-            db.insert_data(EnumTable.TEMPERATURE.returnTableConstValues(),"data1","czas","war");
-
-            DANE DO TABELI POZIOMU CUKRU
-            db.insert_data(EnumTable.GLUCOSE.returnTableConstValues(),"data1","czas","war");
-
-            RESZTA ANALOGICZNIE
-            JAK DANE SIE DODADZA W LOGACH WYSWIETLI SIE KOM "Data inserted" JAK NIE "Data not inserted"
-
-
-         JAK POBRAC DANE Z BAZY DANYCH:
-             db = new DbController(this);
-
-             PONIZEJ LIŚCIE LOL ZOSTANIE PRZYPISANA LISTA LIST
-             PARAMETR DATA2 MOWI Z JAKIEGO DNIA CHCESZ DANE I ŁADUJE JE DO LISTY LOL
-             List lol = db.getGlucoseData("data2");
-
-             PONIZEJ DO COL1 ZOSTANIE PRZYPISANA LISTA Z POPRZENIEJ LISTY XD
-             List col1 = (List) lol.get(0);
-
-             A NIŻEJ WYKORZYSTANIE DANYCH Z TEJ LISTY DO WYPISANIA DANYCH Z JEDNEGO WIERSZA BAZY DANYCH
-             Log.d("lol", (String) col1.get(0) + "\n" + col1.get(1) + "\n" + col1.get(2) + "\n" + col1.get(3));
-
-             JAK DANYCH NIE BEDZIE ZOSTANIE ZWRÓCONY NULL
-             INDEKSOWANIE LIST WEWNĘTRZNYCH (w przykładzie col1):
-             0-ID
-             1-DATA
-             2-CZAS
-             3-WARTOŚĆ
-
-          JAK LATWO SPRAWDZIC ILOŚĆ WPROWADZONYCH DANYCH?:
-             db = new DbController(this);
-             List lol = db.getGlucoseData("data2")
-             int count = lol.size();
-             COUT TO BEDZIE LICZBA WIERSZY Z BD
-
-          CZEMU CHUJOWA LISTA W LIŚCIE??
-             PONIEWAŻCHCIAŁEM ZEBYS JEDNA KOMENDA ZACIAGAŁA WSZYSTKIE DANE Z JEDNEGO DNIA
-             A ZE ZAZWYCZAJ JEST PO KILKA WIERSZY Z KILKOMA WARTOŚCIMI UWAZAM ZE TO JEST
-             NAJPROSTSZA METODA XD
-
-             NIZEJ MOZESZ ZOBACZYC ZASTOSOWANIE W PRAKTYCE:
-
-      */
-
 
         Button addNoteButton = findViewById(R.id.addNote);
         addNoteButton.setOnClickListener(new View.OnClickListener() {
@@ -95,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
                 //przejscie do nowego okna wyboru notatki do dodania do obecnego dnia
                 Intent intentChoiceData = new Intent(MainActivity.this, ChoiceData.class);
                 Calendar cal = Calendar.getInstance();
-                intentChoiceData.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                int month = cal.get(Calendar.MONTH);
+                intentChoiceData.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                         "-" + cal.get(Calendar.DAY_OF_MONTH));
+
                 startActivity(intentChoiceData);
             }
         });
@@ -109,8 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intentResult = new Intent(MainActivity.this, ResultFrom30Days.class);
                 Calendar cal = Calendar.getInstance();
-                intentResult.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                int month = cal.get(Calendar.MONTH);
+                intentResult.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                         "-" + cal.get(Calendar.DAY_OF_MONTH));
+                intentResult.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentResult);
             }
         });
@@ -118,9 +68,10 @@ public class MainActivity extends AppCompatActivity {
         final CalendarView calendarView = findViewById(R.id.calendarView);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(CalendarView view, final int year, final int month, final int dayOfMonth) {
+            public void onSelectedDayChange(CalendarView view, final int year,final int month, final int dayOfMonth) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                String chooseDate = dayOfMonth + "-" + month + "-" + year;
+
+                String chooseDate = dayOfMonth + "-" + (month) + "-" + year;
                 Date currentDateDate = null;
                 Date chooseDateDate = null;
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
@@ -137,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intentAddVisit = new Intent(MainActivity.this, AddVisit.class);
-                            intentAddVisit.putExtra("date", year + "-" + month + "-" + dayOfMonth);
+                            int month2= month +1;
+                            intentAddVisit.putExtra("date", year + "-" + month2 + "-" + dayOfMonth);
+                            intentAddVisit.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY );
                             startActivity(intentAddVisit);
                         }
                     });
@@ -148,7 +101,9 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intentChoiceData = new Intent(MainActivity.this, ChoiceData.class);
                             intentChoiceData.putExtra("showData", true);
-                            intentChoiceData.putExtra("date", year + "-" + month + "-" + dayOfMonth);
+                            int month2= month +1;
+                            intentChoiceData.putExtra("date", year + "-" + month2 + "-" + dayOfMonth);
+                            intentChoiceData.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intentChoiceData);
                         }
                     });
@@ -175,6 +130,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.changeReferenceValuesButton:
                 Intent intent = new Intent(this, ChangeReferenceValues.class);
                 startActivity(intent);
+                break;
+            case R.id.VisitInFuture:
+                Intent intentVisit = new Intent(this, VisitFutureActivity.class);
+                startActivity(intentVisit);
                 break;
             case R.id.DeleteWeight:
                 CheckIfAllDataFromTableApears(db.getAllWeight());
@@ -225,5 +184,19 @@ public class MainActivity extends AppCompatActivity {
             }
             Log.d("data", "null");
         }
+    }
+
+    public Date convertToDate(String date){
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date convertedDate = new Date();
+
+        try {
+            convertedDate = dateFormat.parse(date);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return convertedDate;
     }
 }

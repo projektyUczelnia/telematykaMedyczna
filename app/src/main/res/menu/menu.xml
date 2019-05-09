@@ -7,6 +7,10 @@
         android:title="Zmień wartości referencyjne"
         app:showAsAction="collapseActionView" />
     <item
+        android:id="@+id/VisitInFuture"
+        android:title="Wyświetl wizyty"
+        app:showAsAction="collapseActionView" />
+    <item
         android:id="@+id/DeleteWeight"
         android:title="usuń wagę (wszystkie dane)"
         app:showAsAction="collapseActionView" />

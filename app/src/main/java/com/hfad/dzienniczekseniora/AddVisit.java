@@ -66,12 +66,13 @@ public class AddVisit extends AppCompatActivity {
                 Intent intentBackToMainActivity = new Intent(AddVisit.this, ChoiceData.class);
                 intentBackToMainActivity.putExtra("date", date);
                 Calendar cal = Calendar.getInstance();
-                String currentDate = cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                int month = cal.get(Calendar.MONTH);
+                String currentDate = cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                         "-" + cal.get(Calendar.DAY_OF_MONTH);
                 if (!date.equals(currentDate)) {
                     intentBackToMainActivity.putExtra("showData", true);
                 }
-                intentBackToMainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intentBackToMainActivity.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY );
                 startActivity(intentBackToMainActivity);
             }
         });

@@ -78,7 +78,8 @@ public class ChoiceData extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intentAddWeight = new Intent(ChoiceData.this, WeightActivity.class);
                     Calendar cal = Calendar.getInstance();
-                    intentAddWeight.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                    int month = cal.get(Calendar.MONTH);
+                    intentAddWeight.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddWeight.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddWeight);
@@ -90,7 +91,8 @@ public class ChoiceData extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intentAddTemperature = new Intent(ChoiceData.this, TemperatureActivity.class);
                     Calendar cal = Calendar.getInstance();
-                    intentAddTemperature.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                    int month = cal.get(Calendar.MONTH);
+                    intentAddTemperature.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddTemperature.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddTemperature);
@@ -102,7 +104,8 @@ public class ChoiceData extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intentAddGlucose = new Intent(ChoiceData.this, GlucoseActivity.class);
                     Calendar cal = Calendar.getInstance();
-                    intentAddGlucose.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                    int month = cal.get(Calendar.MONTH);
+                    intentAddGlucose.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddGlucose.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddGlucose);
@@ -114,7 +117,8 @@ public class ChoiceData extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intentAddPressure = new Intent(ChoiceData.this, PressureActivity.class);
                     Calendar cal = Calendar.getInstance();
-                    intentAddPressure.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                    int month = cal.get(Calendar.MONTH);
+                    intentAddPressure.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddPressure.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddPressure);
@@ -126,7 +130,8 @@ public class ChoiceData extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intentAddOther = new Intent(ChoiceData.this, OtherActivity.class);
                     Calendar cal = Calendar.getInstance();
-                    intentAddOther.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                    int month = cal.get(Calendar.MONTH);
+                    intentAddOther.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddOther.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddOther);
@@ -138,7 +143,8 @@ public class ChoiceData extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intentAddVisit = new Intent(ChoiceData.this, AddVisit.class);
                     Calendar cal = Calendar.getInstance();
-                    intentAddVisit.putExtra("date", cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) +
+                    int month = cal.get(Calendar.MONTH);
+                    intentAddVisit.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddVisit.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddVisit);

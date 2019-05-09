@@ -146,7 +146,7 @@ public class DbHelper extends SQLiteOpenHelper {
      * Method returns data from Glucose table for last 30 days
      * @return
      */
-    public List getGlucose30Data() {
+    public List getAllVisitsFuture() {
         return null;
     }
 
@@ -187,8 +187,6 @@ public class DbHelper extends SQLiteOpenHelper {
      */
     public void getDeleteGlucose() {
     }
-
-
 
 
 

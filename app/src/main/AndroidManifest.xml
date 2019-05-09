@@ -3,7 +3,8 @@
     package="com.hfad.dzienniczekseniora">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,7 +36,8 @@
         <activity android:name=".WeightChartActivity" />
         <activity android:name=".TemperatureChartActivity" />
         <activity android:name=".GlucoseChartActivity" />
-        <activity android:name=".PressureChartActivity"></activity>
+        <activity android:name=".PressureChartActivity" />
+        <activity android:name=".VisitFutureActivity"></activity>
     </application>
 
 </manifest>

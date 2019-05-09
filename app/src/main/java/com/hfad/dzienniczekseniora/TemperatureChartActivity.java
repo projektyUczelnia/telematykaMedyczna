@@ -8,6 +8,8 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.LimitLine;
 import com.hfad.dzienniczekseniora.database.DbController;
 
 import java.util.ArrayList;
@@ -31,6 +33,8 @@ public class TemperatureChartActivity extends AppCompatActivity {
         MainActivity mainActivity = new MainActivity();
         Date dateNow = mainActivity.convertToDate(nowDate);
 
+        int average = 0;
+
         int j=0;
 
         try {
@@ -39,20 +43,25 @@ public class TemperatureChartActivity extends AppCompatActivity {
                 Date dateFromList = mainActivity.convertToDate(object.get(1).toString());
 
                 if(dateFromList.after(dateNow)) {
-                    date.add(object.get(1).toString());
+                    date.add(object.get(1).toString()+" "+object.get(2).toString());
                     System.out.print("Data: " + object.get(1).toString() + "\n");
                     value.add(new BarEntry((Float.parseFloat(object.get(3).toString())), j));
+                    average += Integer.parseInt(object.get(3).toString());
                     System.out.print("Wartość: " + object.get(3).toString() + "\n");
                     j++;
                 }
-            }
 
+            }
+            average= average/j;
             BarDataSet dataset = new BarDataSet(value, "w stopniach Celsjusza");
             BarChart chart = new BarChart(this);
+            chart.setDescription("# Temperatura z miesiaca");
+            dataset.setColors(ColorTemplate.LIBERTY_COLORS);
             setContentView(chart);
 
-
             BarData data = new BarData(date, dataset);
+            LimitLine line = new LimitLine(average);
+            data.addLimitLine(line);
             chart.setData(data);
         }
         catch(Exception e){

@@ -1,7 +1,12 @@
 package com.hfad.dzienniczekseniora;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +22,7 @@ import com.hfad.dzienniczekseniora.database.DbHelper;
 import com.hfad.dzienniczekseniora.database.DbController;
 import com.hfad.dzienniczekseniora.database.SQLiteExcel;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        permission();
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         final String currentDate = calendar.get(Calendar.DAY_OF_MONTH) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.YEAR);
@@ -42,9 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentChoiceData = new Intent(MainActivity.this, ChoiceData.class);
                 Calendar cal = Calendar.getInstance();
                 int month = cal.get(Calendar.MONTH);
-                intentChoiceData.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
+                intentChoiceData.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month + 1) +
                         "-" + cal.get(Calendar.DAY_OF_MONTH));
-
                 startActivity(intentChoiceData);
             }
         });
@@ -58,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentResult = new Intent(MainActivity.this, ResultFrom30Days.class);
                 Calendar cal = Calendar.getInstance();
                 int month = cal.get(Calendar.MONTH);
-                intentResult.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
+                intentResult.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month + 1) +
                         "-" + cal.get(Calendar.DAY_OF_MONTH));
                 intentResult.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentResult);
@@ -68,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         final CalendarView calendarView = findViewById(R.id.calendarView);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(CalendarView view, final int year,final int month, final int dayOfMonth) {
+            public void onSelectedDayChange(CalendarView view, final int year, final int month, final int dayOfMonth) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
                 String chooseDate = dayOfMonth + "-" + (month) + "-" + year;
@@ -76,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 Date chooseDateDate = null;
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
                 alertDialogBuilder.setMessage("WYBIERZ: ");
-
                 try {
                     currentDateDate = simpleDateFormat.parse(currentDate);
                     chooseDateDate = simpleDateFormat.parse(chooseDate);
@@ -88,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intentAddVisit = new Intent(MainActivity.this, AddVisit.class);
-                            int month2= month +1;
+                            int month2 = month + 1;
                             intentAddVisit.putExtra("date", year + "-" + month2 + "-" + dayOfMonth);
-                            intentAddVisit.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY );
+                            intentAddVisit.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                             startActivity(intentAddVisit);
                         }
                     });
@@ -101,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intentChoiceData = new Intent(MainActivity.this, ChoiceData.class);
                             intentChoiceData.putExtra("showData", true);
-                            int month2= month +1;
+                            int month2 = month + 1;
                             intentChoiceData.putExtra("date", year + "-" + month2 + "-" + dayOfMonth);
                             intentChoiceData.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intentChoiceData);
@@ -136,9 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentVisit);
                 break;
             case R.id.DeleteWeight:
-                CheckIfAllDataFromTableApears(db.getAllWeight());
                 db.getDeleteWeight();
-                CheckIfAllDataFromTableApears(db.getAllWeight());
                 break;
             case R.id.DeleteGlucose:
                 db.getDeleteGlucose();
@@ -159,38 +162,28 @@ public class MainActivity extends AppCompatActivity {
                 SQLiteExcel sqLiteExcel = new SQLiteExcel(getApplicationContext());
                 sqLiteExcel.ifFileExistsAndCreate();
                 sqLiteExcel.checkIfXslCreated();
-                startActivity(Intent.createChooser(sqLiteExcel.sendEmail(), "Send it out!"));
+                sendMail(sqLiteExcel);
                 break;
-
         }
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Method shows in log all data from dbList
-     *
-     * @param dbList
-     */
-    //TODO wyświetla w logach wszystkie dane mysle ze moze sie przydac
-    public void CheckIfAllDataFromTableApears(List dbList) {
-        List data = null;
-        if (dbList != null) {
-            data = dbList;
-        }
-        if (data != null) {
-            for (int i = 0; i < data.size(); i++) {
-                List col1 = (List) data.get(i);
-                Log.d("data", (String) col1.get(0) + "\n" + col1.get(1) + "\n" + col1.get(2) + "\n" + col1.get(3));
-            }
-            Log.d("data", "null");
-        }
+    public void sendMail(SQLiteExcel sqLiteExcel) {
+        File file = new File(sqLiteExcel.getXslFile());
+        Intent mailIntent = new Intent(Intent.ACTION_SEND);
+        mailIntent.setType("application/message");
+        mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"janekpro996@gmail.com"});
+        mailIntent.putExtra(Intent.EXTRA_SUBJECT, "MySubject");
+        Uri URI = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", file);
+        mailIntent.putExtra(Intent.EXTRA_STREAM, URI);
+        startActivity(Intent.createChooser(mailIntent, "Send it out!"));
+
     }
 
-    public Date convertToDate(String date){
 
+    public Date convertToDate(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date convertedDate = new Date();
-
         try {
             convertedDate = dateFormat.parse(date);
         } catch (ParseException e) {
@@ -198,5 +191,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return convertedDate;
+    }
+
+    public void permission() {
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
+                1);
     }
 }

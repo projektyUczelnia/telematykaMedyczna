@@ -136,4 +136,23 @@ public class DbController extends DbHelper {
         db.execSQL("delete from "+ EnumTable.PRESSURE.returnTableConstValues().get(0));
     }
 
+    /**
+     * Method shows in log all data from dbList
+     *
+     * @param dbList
+     */
+    //TODO wyświetla w logach wszystkie dane mysle ze moze sie przydac
+    public void CheckIfAllDataFromTableApears(List dbList) {
+        List data = null;
+        if (dbList != null) {
+            data = dbList;
+        }
+        if (data != null) {
+            for (int i = 0; i < data.size(); i++) {
+                List col1 = (List) data.get(i);
+                Log.d("data", (String) col1.get(0) + "\n" + col1.get(1) + "\n" + col1.get(2) + "\n" + col1.get(3));
+            }
+            Log.d("data", "null");
+        }
+    }
 }

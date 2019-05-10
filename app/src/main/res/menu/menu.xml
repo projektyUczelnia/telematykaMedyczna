@@ -36,6 +36,6 @@
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/ExportDataToExcel"
-        android:title="Prześlij dane do excela"
+        android:title="Prześlij dane (Excel)"
         app:showAsAction="collapseActionView" />
 </menu>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import com.ajts.androidmads.library.SQLiteToExcel;
@@ -12,9 +13,9 @@ import java.io.File;
 
 public class SQLiteExcel {
     Context context;
-    String fileName = "excel.xsl";
+    String fileName = "excel.xls";
     String directory_path = Environment.getExternalStorageDirectory().getPath() + "/backup/";
-    String directory_path2 = Environment.getExternalStorageDirectory().getPath() + "/backup/"+fileName;
+    String directory_path2 = directory_path+fileName;
     public SQLiteExcel(Context context) {
         this.context = context;
     }
@@ -58,13 +59,7 @@ public class SQLiteExcel {
         }
     }
 
-    public Intent sendEmail() {
-        Intent mailIntent = new Intent(Intent.ACTION_SEND);
-        mailIntent.setType("application/message");
-        mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"janekpro996@gmail.com"});
-        mailIntent.putExtra(Intent.EXTRA_SUBJECT, "MySubject");
-        Uri URI = Uri.parse(directory_path2);
-        mailIntent.putExtra(Intent.EXTRA_STREAM, URI);
-        return mailIntent;
+    public String getXslFile(){
+        return directory_path2;
     }
 }

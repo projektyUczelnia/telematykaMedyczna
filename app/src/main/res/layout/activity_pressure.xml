@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/tlo_drewno_background"
     tools:context=".PressureActivity">
 
     <android.support.v7.widget.GridLayout
@@ -17,7 +18,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/addTime"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_gravity="center|fill"
             app:layout_rowWeight="1" />
@@ -26,12 +29,14 @@
             android:id="@+id/editText7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ems="10"
             android:enabled="false"
             android:focusable="false"
-            android:ems="10"
             android:inputType="date"
             android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_rowWeight="2" />
 
@@ -48,9 +53,11 @@
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberSigned"
                 android:hint="Skurczowe"
+                android:inputType="numberSigned"
                 android:textAlignment="textEnd"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_rowWeight="1" />
 
             <TextView
@@ -60,6 +67,7 @@
                 android:gravity="center"
                 android:text="/"
                 android:textAlignment="center"
+                android:textColor="@android:color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 app:layout_rowWeight="1" />
@@ -69,9 +77,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberSigned"
                 android:hint="Rozkurczowe"
+                android:inputType="numberSigned"
                 android:textAlignment="textStart"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_rowWeight="1" />
         </android.support.v7.widget.GridLayout>
 
@@ -85,7 +95,9 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/save"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_rowWeight="4" />
     </android.support.v7.widget.GridLayout>

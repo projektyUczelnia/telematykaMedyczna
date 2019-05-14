@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/tlo_drewno_background"
     tools:context=".AddVisit">
 
     <android.support.v7.widget.GridLayout
@@ -20,7 +21,9 @@
             android:layout_marginBottom="20dp"
             android:text="Data"
             android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -31,7 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/addTime"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="2" />
@@ -40,11 +45,13 @@
             android:id="@+id/timeTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:enabled="false"
             android:focusable="false"
-            android:layout_marginTop="20dp"
             android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="3" />
@@ -55,10 +62,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:hint="@string/addInformations"
+            android:inputType="textPersonName"
             android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="4" />
@@ -73,7 +82,9 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/save"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_rowWeight="5" />
 

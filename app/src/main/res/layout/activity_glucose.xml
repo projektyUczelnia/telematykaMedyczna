@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/tlo_drewno_background"
     tools:context=".GlucoseActivity">
 
     <android.support.v7.widget.GridLayout
@@ -17,7 +18,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/addTime"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_gravity="center|fill"
             app:layout_rowWeight="1" />
@@ -26,12 +29,14 @@
             android:id="@+id/editText5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ems="10"
             android:enabled="false"
             android:focusable="false"
-            android:ems="10"
             android:inputType="date"
             android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_rowWeight="2" />
 
@@ -42,7 +47,9 @@
             android:hint="Wartość cukru"
             android:inputType="numberDecimal"
             android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_rowWeight="3" />
 
@@ -56,7 +63,9 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/save"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_rowWeight="4" />
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/tlo_drewno_background"
     tools:context=".VisitFutureActivity">
 
     <android.support.v7.widget.GridLayout
@@ -26,10 +27,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="20dp"
-                    android:background="@color/design_default_color_primary_dark"
+                    android:background="@color/colorPrimary"
                     android:text="Przyszłe wizyty:"
                     android:textAlignment="center"
-                    android:textColor="@android:color/background_light"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>

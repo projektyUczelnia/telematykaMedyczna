@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/tlo_drewno_background"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -22,7 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/addNote"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/result"
@@ -30,15 +32,19 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/resultButton"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
+            android:background="@color/colorPrimary"
             android:focusable="auto"
-            android:focusableInTouchMode="false" />
+            android:focusableInTouchMode="false"
+            android:selectedWeekBackgroundColor="@color/colorAccent"
+            android:weekNumberColor="@android:color/background_dark" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

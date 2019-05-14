@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChangeReferenceValues"
-    android:orientation="vertical">
+    android:background="@mipmap/tlo_drewno_background"
+    android:orientation="vertical"
+    tools:context=".ChangeReferenceValues">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="Uaktualnij Dane"
+        android:textColor="@android:color/black"
         android:textSize="40dp"
-        android:text="Uaktualnij Dane" />
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/valueTochangeList"

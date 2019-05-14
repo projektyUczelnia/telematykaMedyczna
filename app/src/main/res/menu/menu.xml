@@ -11,31 +11,31 @@
         android:title="Wyświetl wizyty"
         app:showAsAction="collapseActionView" />
     <item
+        android:id="@+id/ExportDataToExcel"
+        android:title="Prześlij dane (Excel)"
+        app:showAsAction="collapseActionView" />
+    <item
         android:id="@+id/DeleteWeight"
-        android:title="usuń wagę (wszystkie dane)"
+        android:title="Usuń wszystkie dane o wadze"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/DeletePressure"
-        android:title="usuń cisnienie (wszystkie dane)"
+        android:title="Usuń wszystkie dane o cisnieniu"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/DeleteTemperature"
-        android:title="usuń temperature (wszystkie dane)"
+        android:title="Usuń wszystkie dane o temperaturze"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/DeleteVisits"
-        android:title="usuń wizyty (wszystkie dane)"
+        android:title="Usuń wszystkie dane o wizycie"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/DeleteOthers"
-        android:title="usuń inne (wszystkie dane)"
+        android:title="Usuń wszystkie dane o inne"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/DeleteGlucose"
-        android:title="usuń poziom cukru (wszystkie dane)"
-        app:showAsAction="collapseActionView" />
-    <item
-        android:id="@+id/ExportDataToExcel"
-        android:title="Prześlij dane (Excel)"
+        android:title="Usuń wszystkie dane o poziomie cukru"
         app:showAsAction="collapseActionView" />
 </menu>

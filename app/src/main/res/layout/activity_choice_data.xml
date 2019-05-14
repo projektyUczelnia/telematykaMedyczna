@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/tlo_drewno_background"
     tools:context=".ChoiceData">
 
     <android.support.v7.widget.GridLayout
@@ -19,7 +20,9 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:text="@string/weight"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -31,7 +34,9 @@
             android:layout_margin="2dp"
             android:scrollbars="vertical"
             android:text="@string/result"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="2" />
@@ -42,7 +47,9 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:text="@string/temperature"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="2"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -54,7 +61,9 @@
             android:layout_margin="2dp"
             android:scrollbars="vertical"
             android:text="@string/result"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="2"
             app:layout_gravity="fill"
             app:layout_rowWeight="2" />
@@ -65,7 +74,9 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:text="@string/glucose"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="3"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -77,7 +88,9 @@
             android:layout_margin="2dp"
             android:scrollbars="vertical"
             android:text="@string/result"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="3"
             app:layout_gravity="fill"
             app:layout_rowWeight="2" />
@@ -88,7 +101,9 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:text="@string/pressure"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="4"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -100,7 +115,9 @@
             android:layout_margin="2dp"
             android:scrollbars="vertical"
             android:text="@string/result"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="4"
             app:layout_gravity="fill"
             app:layout_rowWeight="2" />
@@ -111,7 +128,9 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:text="@string/visit"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="5"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -123,7 +142,9 @@
             android:layout_margin="2dp"
             android:scrollbars="vertical"
             android:text="@string/result"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="5"
             app:layout_gravity="fill"
             app:layout_rowWeight="2" />
@@ -134,7 +155,9 @@
             android:layout_height="0dp"
             android:layout_margin="2dp"
             android:text="@string/other"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="6"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -146,10 +169,12 @@
             android:layout_margin="2dp"
             android:scrollbars="vertical"
             android:text="@string/result"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_columnWeight="6"
             app:layout_gravity="fill"
             app:layout_rowWeight="2" />
 
-    </android.support.v7.widget.GridLayout>
+        </android.support.v7.widget.GridLayout>
 </android.support.design.widget.CoordinatorLayout>

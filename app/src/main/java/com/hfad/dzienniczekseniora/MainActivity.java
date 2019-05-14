@@ -140,29 +140,29 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentVisit = new Intent(this, VisitFutureActivity.class);
                 startActivity(intentVisit);
                 break;
-            case R.id.DeleteWeight:
-                db.getDeleteWeight();
-                break;
-            case R.id.DeleteGlucose:
-                db.getDeleteGlucose();
-                break;
-            case R.id.DeleteOthers:
-                db.getDeleteOtherData();
-                break;
-            case R.id.DeletePressure:
-                db.getDeletePressure();
-                break;
-            case R.id.DeleteTemperature:
-                db.getDeleteTemperature();
-                break;
-            case R.id.DeleteVisits:
-                db.getDeleteVisits();
-                break;
             case R.id.ExportDataToExcel:
                 SQLiteExcel sqLiteExcel = new SQLiteExcel(getApplicationContext());
                 sqLiteExcel.ifFileExistsAndCreate();
                 sqLiteExcel.checkIfXslCreated();
                 sendMail(sqLiteExcel);
+                break;
+            case R.id.DeleteWeight:
+                db.getDeleteWeight();
+                break;
+            case R.id.DeleteTemperature:
+                db.getDeleteTemperature();
+                break;
+            case R.id.DeleteGlucose:
+                db.getDeleteGlucose();
+                break;
+            case R.id.DeletePressure:
+                db.getDeletePressure();
+                break;
+            case R.id.DeleteVisits:
+                db.getDeleteVisits();
+                break;
+            case R.id.DeleteOthers:
+                db.getDeleteOtherData();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         File file = new File(sqLiteExcel.getXslFile());
         Intent mailIntent = new Intent(Intent.ACTION_SEND);
         mailIntent.setType("application/message");
-        mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"janekpro996@gmail.com"});
+        mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
         mailIntent.putExtra(Intent.EXTRA_SUBJECT, "MySubject");
         Uri URI = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", file);
         mailIntent.putExtra(Intent.EXTRA_STREAM, URI);

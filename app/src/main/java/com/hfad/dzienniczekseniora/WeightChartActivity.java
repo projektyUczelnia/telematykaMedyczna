@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public class WeightChartActivity extends AppCompatActivity {
+public class WeightChartActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

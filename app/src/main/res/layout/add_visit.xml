@@ -29,6 +29,7 @@
             app:layout_rowWeight="1" />
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/addTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,6 +74,7 @@
             app:layout_rowWeight="4" />
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/saveButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

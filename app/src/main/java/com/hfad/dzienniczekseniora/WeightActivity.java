@@ -14,7 +14,7 @@ import com.hfad.dzienniczekseniora.database.EnumTable;
 
 import java.util.Calendar;
 
-public class WeightActivity extends AppCompatActivity {
+public class WeightActivity extends BaseActivity {
     private int mHour, mMinute;
 
     @Override

@@ -13,7 +13,7 @@ import com.hfad.dzienniczekseniora.database.EnumTable;
 
 import java.util.Calendar;
 
-public class PressureActivity extends AppCompatActivity {
+public class PressureActivity extends BaseActivity {
     private int mHour, mMinute;
 
 

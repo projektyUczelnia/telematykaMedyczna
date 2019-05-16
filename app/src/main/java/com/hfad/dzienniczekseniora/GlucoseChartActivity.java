@@ -17,7 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class GlucoseChartActivity extends AppCompatActivity {
+public class GlucoseChartActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

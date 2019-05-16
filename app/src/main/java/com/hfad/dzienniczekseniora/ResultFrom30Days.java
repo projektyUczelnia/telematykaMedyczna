@@ -10,7 +10,7 @@ import com.hfad.dzienniczekseniora.changeReferenceValues.Glucose;
 
 //import com.github.mikephil.charting.charts.BarChart;
 
-public class ResultFrom30Days extends AppCompatActivity {
+public class ResultFrom30Days extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

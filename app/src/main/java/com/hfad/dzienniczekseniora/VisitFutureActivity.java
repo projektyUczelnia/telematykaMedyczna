@@ -11,7 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class VisitFutureActivity extends AppCompatActivity {
+public class VisitFutureActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

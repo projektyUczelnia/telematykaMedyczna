@@ -15,6 +15,7 @@
         app:rowCount="4">
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/weightChart"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -28,6 +29,7 @@
             app:layout_rowWeight="1" />
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/temperatureChart"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -42,6 +44,7 @@
             app:layout_rowWeight="1" />
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/glucoseChart"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -57,6 +60,7 @@
             app:layout_rowWeight="1" />
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/pressureChart"
             android:layout_width="0dp"
             android:layout_height="0dp"

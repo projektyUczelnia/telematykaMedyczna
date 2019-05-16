@@ -9,6 +9,7 @@
     android:layout_gravity="center">
 
     <Button
+        android:background="@drawable/rounded_button"
         android:id="@+id/changeValueButton"
         android:layout_width="150dp"
         android:layout_height="80dp"
@@ -42,8 +43,10 @@
         android:layout_height="75dp"
         android:layout_marginStart="128dp"
         android:layout_marginTop="47dp"
+        android:layout_marginEnd="7dp"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/higher_value_left_nr_picker"
+        app:layout_constraintEnd_toStartOf="@+id/separator_sign1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sectionName"></NumberPicker>
 
@@ -51,11 +54,13 @@
         android:id="@+id/lower_value_right_nr_picker"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="47dp"
         android:layout_marginEnd="128dp"
         android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toTopOf="@+id/higher_value_right_nr_picker"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/separator_sign1"
         app:layout_constraintTop_toBottomOf="@+id/sectionName"></NumberPicker>
 
     <NumberPicker
@@ -64,8 +69,10 @@
         android:layout_height="75dp"
         android:layout_marginStart="128dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toTopOf="@+id/changeValueButton"
+        app:layout_constraintEnd_toStartOf="@+id/separator_sign2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lower_value_left_nr_picker"></NumberPicker>
 
@@ -73,11 +80,13 @@
         android:id="@+id/higher_value_right_nr_picker"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="128dp"
         android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toTopOf="@+id/changeValueButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/separator_sign2"
         app:layout_constraintTop_toBottomOf="@+id/lower_value_right_nr_picker"></NumberPicker>
 
 
@@ -173,6 +182,7 @@
         app:layout_constraintTop_toBottomOf="@+id/changeValueButton" />
 
     <Button
+        android:background="@drawable/rounded_button"
         android:id="@+id/reset_reference_values"
         android:layout_width="150dp"
         android:layout_height="80dp"

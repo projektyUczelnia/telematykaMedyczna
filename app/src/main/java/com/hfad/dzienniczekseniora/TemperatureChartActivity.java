@@ -17,7 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class TemperatureChartActivity extends AppCompatActivity {
+public class TemperatureChartActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

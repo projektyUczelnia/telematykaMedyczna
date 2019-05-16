@@ -11,7 +11,7 @@ import com.hfad.dzienniczekseniora.changeReferenceValues.BloodPressure;
 import com.hfad.dzienniczekseniora.changeReferenceValues.Glucose;
 import com.hfad.dzienniczekseniora.changeReferenceValues.SingkeEdditLayoutClass;
 
-public class ChangeReferenceValues extends AppCompatActivity {
+public class ChangeReferenceValues extends BaseActivity {
     /**
      * Activity that allows us to change reference values
      *

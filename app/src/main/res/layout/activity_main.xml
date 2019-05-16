@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/addNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +42,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:background="@color/colorPrimary"
             android:focusable="auto"
             android:focusableInTouchMode="false"
             android:selectedWeekBackgroundColor="@color/colorAccent"

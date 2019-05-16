@@ -25,7 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class ChoiceData extends AppCompatActivity {
+public class ChoiceData extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +56,14 @@ public class ChoiceData extends AppCompatActivity {
         TextView otherView = findViewById(R.id.otherView);
         scrollingMethod(otherView);
 
-        showDataInWindowWeight(date,weightView);
+        showDataInWindowWeight(date, weightView);
         showDataInWindowTemperature(date, temperatureView);
-        showDataInWindowGlucose(date,glucoseView);
-        showDataInWindowPressure(date,pressureView);
+        showDataInWindowGlucose(date, glucoseView);
+        showDataInWindowPressure(date, pressureView);
         showDataInWindowVisit(date, visitView);
         showDataInWindowOther(date, otherView);
 
-        if(showData) {
+        if (showData) {
             weightButton.setEnabled(false);
             temperatureButton.setEnabled(false);
             glucoseButton.setEnabled(false);
@@ -71,15 +71,14 @@ public class ChoiceData extends AppCompatActivity {
             otherButton.setEnabled(false);
             visitButton.setEnabled(false);
 
-        }
-        else {
+        } else {
             weightButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intentAddWeight = new Intent(ChoiceData.this, WeightActivity.class);
                     Calendar cal = Calendar.getInstance();
                     int month = cal.get(Calendar.MONTH);
-                    intentAddWeight.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
+                    intentAddWeight.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month + 1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddWeight.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddWeight);
@@ -92,7 +91,7 @@ public class ChoiceData extends AppCompatActivity {
                     Intent intentAddTemperature = new Intent(ChoiceData.this, TemperatureActivity.class);
                     Calendar cal = Calendar.getInstance();
                     int month = cal.get(Calendar.MONTH);
-                    intentAddTemperature.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
+                    intentAddTemperature.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month + 1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddTemperature.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddTemperature);
@@ -105,7 +104,7 @@ public class ChoiceData extends AppCompatActivity {
                     Intent intentAddGlucose = new Intent(ChoiceData.this, GlucoseActivity.class);
                     Calendar cal = Calendar.getInstance();
                     int month = cal.get(Calendar.MONTH);
-                    intentAddGlucose.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
+                    intentAddGlucose.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month + 1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddGlucose.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddGlucose);
@@ -118,7 +117,7 @@ public class ChoiceData extends AppCompatActivity {
                     Intent intentAddPressure = new Intent(ChoiceData.this, PressureActivity.class);
                     Calendar cal = Calendar.getInstance();
                     int month = cal.get(Calendar.MONTH);
-                    intentAddPressure.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
+                    intentAddPressure.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month + 1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddPressure.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddPressure);
@@ -131,7 +130,7 @@ public class ChoiceData extends AppCompatActivity {
                     Intent intentAddOther = new Intent(ChoiceData.this, OtherActivity.class);
                     Calendar cal = Calendar.getInstance();
                     int month = cal.get(Calendar.MONTH);
-                    intentAddOther.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
+                    intentAddOther.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month + 1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddOther.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddOther);
@@ -144,7 +143,7 @@ public class ChoiceData extends AppCompatActivity {
                     Intent intentAddVisit = new Intent(ChoiceData.this, AddVisit.class);
                     Calendar cal = Calendar.getInstance();
                     int month = cal.get(Calendar.MONTH);
-                    intentAddVisit.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month+1) +
+                    intentAddVisit.putExtra("date", cal.get(Calendar.YEAR) + "-" + String.valueOf(month + 1) +
                             "-" + cal.get(Calendar.DAY_OF_MONTH));
                     intentAddVisit.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentAddVisit);
@@ -153,11 +152,11 @@ public class ChoiceData extends AppCompatActivity {
         }
     }
 
-    private void scrollingMethod(TextView textView){
+    private void scrollingMethod(TextView textView) {
         textView.setMovementMethod(new ScrollingMovementMethod());
     }
 
-    private void showDataInWindowWeight(String date, TextView view){
+    private void showDataInWindowWeight(String date, TextView view) {
         DbController db = new DbController(this);
         List list = db.getWeightData(date);
         try {
@@ -168,13 +167,12 @@ public class ChoiceData extends AppCompatActivity {
                 view.append("Wartość: " + object.get(3).toString() + "\n");
                 view.append("________________\n");
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             Log.d("Error", "Lista pusta");
         }
     }
 
-    private void showDataInWindowTemperature(String date, TextView view){
+    private void showDataInWindowTemperature(String date, TextView view) {
         DbController db = new DbController(this);
         List list = db.getTempData(date);
         SpannableStringBuilder builder = new SpannableStringBuilder();
@@ -184,24 +182,22 @@ public class ChoiceData extends AppCompatActivity {
                 builder.append("Data: ").append(object.get(1).toString()).append("\n");
                 builder.append("Godzina: ").append(object.get(2).toString()).append("\n");
                 double temperature = Double.parseDouble(object.get(3).toString());
-                SpannableString temperatureColor= new SpannableString(String.valueOf(temperature));
-                if(temperature>36.8 || temperature<36.5){
+                SpannableString temperatureColor = new SpannableString(String.valueOf(temperature));
+                if (temperature > 36.8 || temperature < 36.5) {
                     temperatureColor.setSpan(new ForegroundColorSpan(Color.RED), 0, temperatureColor.length(), 0);
-                }
-                else{
+                } else {
                     temperatureColor.setSpan(new ForegroundColorSpan(Color.GREEN), 0, temperatureColor.length(), 0);
                 }
                 builder.append("Wartość: ").append(temperatureColor).append("\n");
                 builder.append("________________\n");
             }
             view.setText(builder, TextView.BufferType.SPANNABLE);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             Log.d("Error", "Lista pusta");
         }
     }
 
-    private void showDataInWindowGlucose(String date, TextView view){
+    private void showDataInWindowGlucose(String date, TextView view) {
         DbController db = new DbController(this);
         List list = db.getGlucoseData(date);
         SpannableStringBuilder builder = new SpannableStringBuilder();
@@ -212,24 +208,22 @@ public class ChoiceData extends AppCompatActivity {
                 builder.append("Data: ").append(object.get(1).toString()).append("\n");
                 builder.append("Godzina: ").append(object.get(2).toString()).append("\n");
                 double glucose = Double.parseDouble(object.get(3).toString());
-                SpannableString glucoseColor= new SpannableString(String.valueOf(glucose));
-                if(glucose>glucoseSharedPreferences.getHigherBoarder() || glucose<glucoseSharedPreferences.getLowerBoarder()){
+                SpannableString glucoseColor = new SpannableString(String.valueOf(glucose));
+                if (glucose > glucoseSharedPreferences.getHigherBoarder() || glucose < glucoseSharedPreferences.getLowerBoarder()) {
                     glucoseColor.setSpan(new ForegroundColorSpan(Color.RED), 0, glucoseColor.length(), 0);
-                }
-                else{
+                } else {
                     glucoseColor.setSpan(new ForegroundColorSpan(Color.GREEN), 0, glucoseColor.length(), 0);
                 }
                 builder.append("Wartość: ").append(glucoseColor).append("\n");
                 builder.append("________________\n");
             }
             view.setText(builder, TextView.BufferType.SPANNABLE);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             Log.d("Error", "Lista pusta");
         }
     }
 
-    private void showDataInWindowPressure(String date, TextView view){
+    private void showDataInWindowPressure(String date, TextView view) {
         DbController db = new DbController(this);
         List list = db.getPressureData(date);
         SpannableStringBuilder builder = new SpannableStringBuilder();
@@ -246,26 +240,29 @@ public class ChoiceData extends AppCompatActivity {
 
                 SpannableString pressureColor= new SpannableString(String.valueOf(pressure));
                 if(systolic>bloodPressureSharePreferences.getHigherSystolicPressure() ||
-                      //  systolic<bloodPressureSharePreferences.getLowerSystolicPressure() ||
-                        diastolic>bloodPressureSharePreferences.getHigherDiastolicPressure()
-                      //  diastolic<bloodPressureSharePreferences.getLowerDiastolicPressure()
+                        systolic<bloodPressureSharePreferences.getLowerSystolicPressure() ||
+                        diastolic>bloodPressureSharePreferences.getHigherDiastolicPressure()||
+                       diastolic<bloodPressureSharePreferences.getLowerDiastolicPressure()
                         || (systolic-diastolic)<40){
                     pressureColor.setSpan(new ForegroundColorSpan(Color.RED), 0, pressureColor.length(), 0);
                 }
                 else{
                     pressureColor.setSpan(new ForegroundColorSpan(Color.GREEN), 0, pressureColor.length(), 0);
                 }
+                Log.d("hsp", String.valueOf(bloodPressureSharePreferences.getHigherSystolicPressure()));
+                Log.d("lsp", String.valueOf(bloodPressureSharePreferences.getLowerSystolicPressure()));
+                Log.d("hdp", String.valueOf(bloodPressureSharePreferences.getHigherDiastolicPressure()));
+                Log.d("lsp", String.valueOf(bloodPressureSharePreferences.getLowerDiastolicPressure()));
                 builder.append("Wartość: ").append(pressureColor).append("\n");
                 builder.append("________________\n");
             }
             view.setText(builder, TextView.BufferType.SPANNABLE);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             Log.d("Error", "Lista pusta");
         }
     }
 
-    private void showDataInWindowOther(String date, TextView view){
+    private void showDataInWindowOther(String date, TextView view) {
         DbController db = new DbController(this);
         List list = db.getOtherData(date);
         try {
@@ -276,13 +273,12 @@ public class ChoiceData extends AppCompatActivity {
                 view.append("Wartość: " + object.get(3).toString() + "\n");
                 view.append("________________\n");
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             Log.d("Error", "Lista pusta");
         }
     }
 
-    private void showDataInWindowVisit(String date, TextView view){
+    private void showDataInWindowVisit(String date, TextView view) {
         DbController db = new DbController(this);
         List list = db.getVisitData(date);
         try {
@@ -293,8 +289,7 @@ public class ChoiceData extends AppCompatActivity {
                 view.append("Wartość: " + object.get(3).toString() + "\n");
                 view.append("________________\n");
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             Log.d("Error", "Lista pusta");
         }
     }

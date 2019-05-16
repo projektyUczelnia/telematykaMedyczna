@@ -12,43 +12,73 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".BaseActivity"></activity>
         <activity android:name=".ChangeReferenceValues" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.hfad.dzienniczekseniora.provider"
             android:exported="false"
             android:grantUriPermissions="true">
+
             <!-- ressource file to create -->
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths">
-            </meta-data>
+                android:resource="@xml/file_paths"></meta-data>
         </provider>
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChoiceData" />
-        <activity android:name=".AddVisit" />
-        <activity android:name=".ResultFrom30Days" />
-        <activity android:name=".WeightActivity" />
-        <activity android:name=".TemperatureActivity" />
-        <activity android:name=".GlucoseActivity" />
-        <activity android:name=".PressureActivity" />
-        <activity android:name=".OtherActivity" />
-        <activity android:name=".WeightChartActivity" />
-        <activity android:name=".TemperatureChartActivity" />
-        <activity android:name=".GlucoseChartActivity" />
-        <activity android:name=".PressureChartActivity" />
-        <activity android:name=".VisitFutureActivity"></activity>
+        <activity
+            android:name=".ChoiceData"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddVisit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResultFrom30Days"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WeightActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TemperatureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GlucoseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PressureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OtherActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WeightChartActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".TemperatureChartActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".GlucoseChartActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".PressureChartActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".VisitFutureActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

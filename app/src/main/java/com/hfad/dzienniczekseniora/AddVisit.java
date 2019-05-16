@@ -14,7 +14,7 @@ import com.hfad.dzienniczekseniora.database.EnumTable;
 
 import java.util.Calendar;
 
-public class AddVisit extends AppCompatActivity {
+public class AddVisit extends BaseActivity {
     private int mHour, mMinute;
 
     @Override

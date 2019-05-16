@@ -13,7 +13,7 @@ import java.io.File;
 
 public class SQLiteExcel {
     Context context;
-    String fileName = "excel.xls";
+    String fileName = "wyniki.xls";
     String directory_path = Environment.getExternalStorageDirectory().getPath() + "/backup/";
     String directory_path2 = directory_path+fileName;
     public SQLiteExcel(Context context) {

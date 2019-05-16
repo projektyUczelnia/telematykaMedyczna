@@ -14,6 +14,7 @@
         app:rowCount="4">
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/addTime2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -47,7 +48,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Waga"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="24sp"
@@ -56,6 +57,7 @@
             app:layout_rowWeight="3" />
 
         <Button
+            android:background="@drawable/rounded_button"
             android:id="@+id/saveButton2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

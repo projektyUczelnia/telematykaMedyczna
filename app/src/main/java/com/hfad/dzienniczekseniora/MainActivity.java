@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 
@@ -29,7 +30,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     DbHelper db;
 
     @Override
@@ -119,66 +120,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //dodaje button do actionBaru
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    //megoda umożliwiająca wykonanie akcji po naciśnięciu buttona w action barze
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        db = new DbController(this);
-        //TODO to ponizej wszystko mozna wywalić jezeli tylko nie jest nam potrzebny klawisz z usówaniem danych oraz w menu.xml usunać item o id:DeleteWeight
-        switch (item.getItemId()) {
-            case R.id.changeReferenceValuesButton:
-                Intent intent = new Intent(this, ChangeReferenceValues.class);
-                startActivity(intent);
-                break;
-            case R.id.VisitInFuture:
-                Intent intentVisit = new Intent(this, VisitFutureActivity.class);
-                startActivity(intentVisit);
-                break;
-            case R.id.ExportDataToExcel:
-                SQLiteExcel sqLiteExcel = new SQLiteExcel(getApplicationContext());
-                sqLiteExcel.ifFileExistsAndCreate();
-                sqLiteExcel.checkIfXslCreated();
-                sendMail(sqLiteExcel);
-                break;
-            case R.id.DeleteWeight:
-                db.getDeleteWeight();
-                break;
-            case R.id.DeleteTemperature:
-                db.getDeleteTemperature();
-                break;
-            case R.id.DeleteGlucose:
-                db.getDeleteGlucose();
-                break;
-            case R.id.DeletePressure:
-                db.getDeletePressure();
-                break;
-            case R.id.DeleteVisits:
-                db.getDeleteVisits();
-                break;
-            case R.id.DeleteOthers:
-                db.getDeleteOtherData();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void sendMail(SQLiteExcel sqLiteExcel) {
-        File file = new File(sqLiteExcel.getXslFile());
-        Intent mailIntent = new Intent(Intent.ACTION_SEND);
-        mailIntent.setType("application/message");
-        mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
-        mailIntent.putExtra(Intent.EXTRA_SUBJECT, "MySubject");
-        Uri URI = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", file);
-        mailIntent.putExtra(Intent.EXTRA_STREAM, URI);
-        startActivity(Intent.createChooser(mailIntent, "Send it out!"));
-
-    }
 
 
     public Date convertToDate(String date) {

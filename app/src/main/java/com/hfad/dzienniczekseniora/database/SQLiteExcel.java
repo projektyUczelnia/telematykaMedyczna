@@ -11,15 +11,22 @@ import com.ajts.androidmads.library.SQLiteToExcel;
 
 import java.io.File;
 
+/**
+ * Class creates xls file from database
+ */
 public class SQLiteExcel {
     Context context;
     String fileName = "wyniki.xls";
     String directory_path = Environment.getExternalStorageDirectory().getPath() + "/backup/";
-    String directory_path2 = directory_path+fileName;
+    String directory_path2 = directory_path + fileName;
+
     public SQLiteExcel(Context context) {
         this.context = context;
     }
 
+    /**
+     * Method checks if xsl file exists if not it ll create it
+     */
     public void ifFileExistsAndCreate() {
         DbHelper dbHelper = new DbHelper(context);
         File file = new File(directory_path);
@@ -48,9 +55,12 @@ public class SQLiteExcel {
         });
     }
 
+    /**
+     * Method checks if xls file was created
+     */
     public void checkIfXslCreated() {
         final File extStore = Environment.getExternalStorageDirectory();
-        File myFile = new File(extStore.getAbsolutePath() + "/backup/"+fileName);
+        File myFile = new File(extStore.getAbsolutePath() + "/backup/" + fileName);
 
         if (myFile.exists()) {
             Log.d("YES", "YES");
@@ -59,7 +69,12 @@ public class SQLiteExcel {
         }
     }
 
-    public String getXslFile(){
+    /**
+     * Method returns path to created xml file
+     *
+     * @return
+     */
+    public String getXslFile() {
         return directory_path2;
     }
 }

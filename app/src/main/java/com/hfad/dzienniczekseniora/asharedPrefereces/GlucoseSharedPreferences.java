@@ -36,7 +36,7 @@ public class GlucoseSharedPreferences {
     }
 
     /**
-     *
+     * Method returns Higher Boarder of Glucose
      * @return
      */
     public float getHigherBoarder() {
@@ -44,7 +44,7 @@ public class GlucoseSharedPreferences {
     }
 
     /**
-     *
+     * Method returns Lower Boarder of Glucose
      * @return
      */
     public float getLowerBoarder() {

@@ -9,6 +9,9 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class controlls database
+ */
 public class DbController extends DbHelper {
     public DbController(Context context) {
         super(context);

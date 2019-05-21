@@ -73,6 +73,10 @@ public enum EnumTable {
         }
     };
 
+    /**
+     * Method returns const values of tables
+     * @return
+     */
     public abstract List returnTableConstValues();
 
 

@@ -8,6 +8,7 @@
     <string name="updateDataText">Uakyalnij Dane</string>
     <string name="pressure">CIŚNIENIE</string>
     <string name="glucose">POZIOM CUKRU</string>
+    <string name="height">WZROST</string>
     <string name="visit">WIZYTA U LEKARZA</string>
     <string name="other">INNE</string>
     <string name="result">Wyniki: </string>

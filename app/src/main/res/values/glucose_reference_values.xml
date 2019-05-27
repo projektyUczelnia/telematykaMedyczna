@@ -2,4 +2,6 @@
 <resources>
     <integer name="higherGlucoseBoarder" >99</integer>
     <integer name="lowerGlucoseBoarder" >70</integer>
+    <integer name="height" >0</integer>
+    <string name="sex" >0</string>
 </resources>

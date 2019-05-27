@@ -1,6 +1,5 @@
 package com.hfad.dzienniczekseniora;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,7 @@ public class ChangeReferenceValues extends BaseActivity {
      * Class that define Adapter for list view
      */
     class CustomAdapter extends BaseAdapter {
-        int[] sectionName = {R.string.glucose, R.string.pressure};
+        int[] sectionName = {R.string.glucose, R.string.pressure,R.string.height};
 
         @Override
         public int getCount() {
@@ -58,17 +57,19 @@ public class ChangeReferenceValues extends BaseActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             View view = getLayoutInflater().inflate(R.layout.single_eddit_layyout, null);
-          switch (position) {
-              case 0:
-                  SingkeEdditLayoutClass singkeEdditLayoutClass = new BloodPressure(view,position,
-                          getApplicationContext());
-                  break;
-              case 1:
-                  SingkeEdditLayoutClass singkeEdditLayoutClass2 = new Glucose(view,position,
-                          getApplicationContext());
-                  break;
-          }
-        return view;}
+            switch (position) {
+                case 0:
+                    SingkeEdditLayoutClass singkeEdditLayoutClass = new BloodPressure(view, position,
+                            getApplicationContext());
+                    break;
+                case 1:
+                    SingkeEdditLayoutClass singkeEdditLayoutClass2 = new Glucose(view, position,
+                            getApplicationContext());
+                    break;
+
+            }
+            return view;
+        }
 
     }
 }

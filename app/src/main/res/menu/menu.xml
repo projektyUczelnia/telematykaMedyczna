@@ -38,4 +38,8 @@
         android:id="@+id/DeleteGlucose"
         android:title="Usuń wszystkie dane o poziomie cukru"
         app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/BmiValues"
+        android:title="Dodaj wartości"
+        app:showAsAction="collapseActionView" />
 </menu>

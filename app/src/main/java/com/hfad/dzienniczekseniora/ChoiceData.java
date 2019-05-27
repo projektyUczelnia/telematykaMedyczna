@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hfad.dzienniczekseniora.asharedPrefereces.BMISharedPreferences;
 import com.hfad.dzienniczekseniora.asharedPrefereces.BloodPressureSharePreferences;
 import com.hfad.dzienniczekseniora.asharedPrefereces.GlucoseSharedPreferences;
 import com.hfad.dzienniczekseniora.database.DbController;
@@ -159,14 +160,28 @@ public class ChoiceData extends BaseActivity {
     private void showDataInWindowWeight(String date, TextView view) {
         DbController db = new DbController(this);
         List list = db.getWeightData(date);
+        BMISharedPreferences bmiSharedPreferences = new BMISharedPreferences(ChoiceData.this);
+        SpannableStringBuilder builder = new SpannableStringBuilder();
         try {
             for (int i = 0; i < list.size(); i++) {
                 List object = (List) list.get(i);
-                view.append("Data: " + object.get(1).toString() + "\n");
-                view.append("Godzina: " + object.get(2).toString() + "\n");
-                view.append("Wartość: " + object.get(3).toString() + "\n");
-                view.append("________________\n");
+                builder.append("Data: " + object.get(1).toString() + "\n");
+                builder.append("Godzina: " + object.get(2).toString() + "\n");
+                builder.append("Wartość: " + object.get(3).toString() + "\n");
+                double weight = Double.parseDouble(object.get(3).toString());
+                if(bmiSharedPreferences.getHeight() != 0) {
+                    double bmi = weight / ((bmiSharedPreferences.getHeight()/100) * (bmiSharedPreferences.getHeight()/100));
+                    SpannableString bmiColor = new SpannableString(String.valueOf(bmi));
+                    if (bmi < 18.5 || bmi >= 25) {
+                        bmiColor.setSpan(new ForegroundColorSpan(Color.RED), 0, bmiColor.length(), 0);
+                    } else {
+                        bmiColor.setSpan(new ForegroundColorSpan(Color.GREEN), 0, bmiColor.length(), 0);
+                    }
+                    builder.append("BMI: ").append(bmiColor).append("\n");
+                }
+                builder.append("________________\n");
             }
+            view.setText(builder, TextView.BufferType.SPANNABLE);
         } catch (Exception e) {
             Log.d("Error", "Lista pusta");
         }

@@ -43,6 +43,7 @@ public class BloodPressureSharePreferences {
     }
 
     /**
+     * Method returns Higher Systolic Pressure
      * @return
      */
     public int getHigherSystolicPressure() {
@@ -50,6 +51,7 @@ public class BloodPressureSharePreferences {
     }
 
     /**
+     * Metod returns Higher Diastolic Pressure
      * @return
      */
     public int getHigherDiastolicPressure() {
@@ -57,6 +59,7 @@ public class BloodPressureSharePreferences {
     }
 
     /**
+     * Method returns Lower Systolic Pressure
      * @return
      */
     public int getLowerSystolicPressure() {
@@ -64,6 +67,7 @@ public class BloodPressureSharePreferences {
     }
 
     /**
+     * Method returns Lower Diastolic Pressure
      * @return
      */
     public int getLowerDiastolicPressure() {

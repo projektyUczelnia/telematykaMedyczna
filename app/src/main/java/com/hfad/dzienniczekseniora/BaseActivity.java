@@ -18,6 +18,9 @@ import com.hfad.dzienniczekseniora.database.SQLiteExcel;
 
 import java.io.File;
 
+/**
+ * Activity makes a frame for all acfivities
+ */
 public class BaseActivity extends AppCompatActivity {
     DeleteDataInterface deleteDataInterface;
 
@@ -34,7 +37,11 @@ public class BaseActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    //megoda umożliwiająca wykonanie akcji po naciśnięciu buttona w action barze
+    /**
+     * Methods sets functionality of menu buttons
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final DbHelper db = new DbController(this);
@@ -124,6 +131,10 @@ public class BaseActivity extends AppCompatActivity {
         
     }
 
+    /**
+     * Method shows allert when user want to delete data
+     * @param dataName
+     */
     public void allert(String dataName) {
         AlertDialog.Builder allert = new AlertDialog.Builder(this);
         allert.setMessage("Czy chcesz usunąć dane " + dataName);
@@ -144,6 +155,10 @@ public class BaseActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    /**
+     * Method send mail with xls file
+     * @param sqLiteExcel
+     */
     public void sendMail(SQLiteExcel sqLiteExcel) {
         File file = new File(sqLiteExcel.getXslFile());
         Intent mailIntent = new Intent(Intent.ACTION_SEND);

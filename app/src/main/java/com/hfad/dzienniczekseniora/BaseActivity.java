@@ -118,8 +118,17 @@ public class BaseActivity extends AppCompatActivity {
                 };
                 allert("inne?");
                 break;
+            case R.id.BmiValues:
+                Intent intent1 = new Intent(this, InformationPerson.class);
+                startActivity(intent1);
+                break;
+            case R.id.MainWindow:
+                Intent intent2 = new Intent(this, MainActivity.class);
+                startActivity(intent2);
+                break;
         }
         return super.onOptionsItemSelected(item);
+        
     }
 
     /**
@@ -128,7 +137,7 @@ public class BaseActivity extends AppCompatActivity {
      */
     public void allert(String dataName) {
         AlertDialog.Builder allert = new AlertDialog.Builder(this);
-        allert.setMessage("Czy chcesz usunąć dane "+dataName);
+        allert.setMessage("Czy chcesz usunąć dane " + dataName);
         allert.setCancelable(true);
         allert.setPositiveButton("tak", new DialogInterface.OnClickListener() {
             @Override
@@ -142,7 +151,7 @@ public class BaseActivity extends AppCompatActivity {
                 return;
             }
         });
-        AlertDialog alertDialog =allert.create();
+        AlertDialog alertDialog = allert.create();
         alertDialog.show();
     }
 

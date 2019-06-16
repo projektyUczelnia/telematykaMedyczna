@@ -42,4 +42,8 @@
         android:id="@+id/BmiValues"
         android:title="Dodaj wartości"
         app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/MainWindow"
+        android:title="Powrót do okna głównego"
+        app:showAsAction="collapseActionView" />
 </menu>

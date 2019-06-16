@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.hfad.dzienniczekseniora.asharedPrefereces.BMISharedPreferences;
 
-public class InformationPerson extends AppCompatActivity {
+public class InformationPerson extends BaseActivity {
     Double heightValue;
     String sex;
     CheckBox women;

@@ -112,11 +112,16 @@ public class BaseActivity extends AppCompatActivity {
                 allert("inne?");
                 break;
             case R.id.BmiValues:
-                Intent intent1= new Intent(this,InformationPerson.class);
+                Intent intent1 = new Intent(this, InformationPerson.class);
                 startActivity(intent1);
+                break;
+            case R.id.MainWindow:
+                Intent intent2 = new Intent(this, MainActivity.class);
+                startActivity(intent2);
                 break;
         }
         return super.onOptionsItemSelected(item);
+        
     }
 
     public void allert(String dataName) {

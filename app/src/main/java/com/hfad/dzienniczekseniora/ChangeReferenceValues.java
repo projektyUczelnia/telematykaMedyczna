@@ -29,7 +29,7 @@ public class ChangeReferenceValues extends BaseActivity {
      * Class that define Adapter for list view
      */
     class CustomAdapter extends BaseAdapter {
-        int[] sectionName = {R.string.glucose, R.string.pressure,R.string.height};
+        int[] sectionName = {R.string.glucose, R.string.pressure};
 
         @Override
         public int getCount() {

@@ -2,13 +2,9 @@ package com.hfad.dzienniczekseniora;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
@@ -21,9 +17,7 @@ import com.hfad.dzienniczekseniora.asharedPrefereces.BloodPressureSharePreferenc
 import com.hfad.dzienniczekseniora.asharedPrefereces.GlucoseSharedPreferences;
 import com.hfad.dzienniczekseniora.database.DbController;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class ChoiceData extends BaseActivity {
